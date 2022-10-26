@@ -1,0 +1,7 @@
+require("lsig.set")
+require("lsig.remap")
+require("lsig.lspconfig")
+require("lsig.cmp")
+require("lsig.tree")
+require("lsig.telescope")
+require("lsig.treesitter")
