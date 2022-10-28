@@ -1,6 +1,7 @@
 local nnoremap = require("lsig.keymap").nnoremap
 
 nnoremap("<leader>pv", "<cmd>Ex<CR>")
+nnoremap("<leader>nh", "<cmd>:nohl<CR>")
 
 nnoremap("<leader>ff", "<cmd>lua require('telescope.builtin').find_files()<CR>")
 nnoremap("<leader>fg", "<cmd>lua require('telescope.builtin').live_grep()<CR>")
