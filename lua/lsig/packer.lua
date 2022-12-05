@@ -28,4 +28,13 @@ return require('packer').startup(function(use)
   'nvim-lualine/lualine.nvim',
   requires = { 'kyazdani42/nvim-web-devicons', opt = true }
 }
+  use 'christoomey/vim-tmux-navigator'
+  use 'tpope/vim-surround'
+  use 'vim-scripts/ReplaceWithRegister'
+  use {
+    'numToStr/Comment.nvim',
+    config = function()
+        require('Comment').setup()
+    end
+}
   end)
