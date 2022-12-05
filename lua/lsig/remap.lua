@@ -8,6 +8,6 @@ nnoremap("<leader>fg", "<cmd>lua require('telescope.builtin').live_grep()<CR>")
 nnoremap("<leader>fb", "<cmd>lua require('telescope.builtin').buffers()<CR>")
 nnoremap("<leader>fh", "<cmd>lua require('telescope.builtin').help_tags()<CR>")
 
-nnoremap("<leader><CR>", "<cmd>:NvimTreeToggle<CR>")
 nnoremap("<leader>ot", "<cmd>:NvimTreeOpen<CR>")
+nnoremap("<leader>ct", "<cmd>:NvimTreeClose<CR>")
 
