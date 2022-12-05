@@ -11,7 +11,3 @@ nnoremap("<leader>fh", "<cmd>lua require('telescope.builtin').help_tags()<CR>")
 nnoremap("<leader><CR>", "<cmd>:NvimTreeToggle<CR>")
 nnoremap("<leader>ot", "<cmd>:NvimTreeOpen<CR>")
 
-nnoremap("<leader>tt", "<cmd><C-w><CR>")
-
-
-

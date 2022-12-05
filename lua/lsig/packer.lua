@@ -24,4 +24,8 @@ return require('packer').startup(function(use)
   use 'hrsh7th/cmp-cmdline'
   use 'windwp/nvim-autopairs'
   use "L3MON4D3/LuaSnip"
+  use {
+  'nvim-lualine/lualine.nvim',
+  requires = { 'kyazdani42/nvim-web-devicons', opt = true }
+}
   end)
