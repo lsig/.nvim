@@ -1,5 +1,6 @@
   -- Set up nvim-cmp.
   local cmp = require'cmp'
+  local lspkind =  require("lspkind")
 
   cmp.setup({
     snippet = {
@@ -22,9 +23,14 @@
     sources = cmp.config.sources({
       { name = 'nvim_lsp' },
       { name = 'luasnip' }, -- For luasnip users.
-    }, {
       { name = 'buffer' },
-    })
+    }),
+    formatting = {
+        format = lspkind.cmp_format({
+            maxwidth = 50,
+            ellipsis_char = "...",
+        }),
+    },
   })
 
   -- Set configuration for specific filetype.

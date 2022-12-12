@@ -10,6 +10,7 @@ return require('packer').startup(function(use)
     "williamboman/mason-lspconfig.nvim",
     "neovim/nvim-lspconfig",
 }
+  use "onsails/lspkind.nvim"
   use 'nvim-treesitter/nvim-treesitter'
   use {
   'nvim-telescope/telescope.nvim', tag = '0.1.0',
