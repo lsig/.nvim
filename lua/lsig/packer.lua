@@ -4,7 +4,12 @@ return require('packer').startup(function(use)
   -- Packer can manage itself
   use 'wbthomason/packer.nvim'
   use 'folke/tokyonight.nvim'
-  use 'neovim/nvim-lspconfig'
+  -- lsp config 
+  use {
+    "williamboman/mason.nvim",
+    "williamboman/mason-lspconfig.nvim",
+    "neovim/nvim-lspconfig",
+}
   use 'nvim-treesitter/nvim-treesitter'
   use {
   'nvim-telescope/telescope.nvim', tag = '0.1.0',
@@ -27,6 +32,10 @@ return require('packer').startup(function(use)
   use {
   'nvim-lualine/lualine.nvim',
   requires = { 'kyazdani42/nvim-web-devicons', opt = true }
+}
+  use {
+    "glepnir/lspsaga.nvim",
+     branch = "main",
 }
   use 'christoomey/vim-tmux-navigator'
   use 'tpope/vim-surround'

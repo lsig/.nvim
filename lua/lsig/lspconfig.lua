@@ -1,3 +1,12 @@
+require("mason").setup()
+require("mason-lspconfig").setup({
+    ensure_installed = { 
+        "sumneko_lua", 
+        "rust_analyzer",
+        "pyright",
+        "tsserver"
+    }
+})
 
 local lsp_flags = {
   -- This is the default in Nvim 0.7+
@@ -19,3 +28,5 @@ require('lspconfig')['rust_analyzer'].setup{
       ["rust-analyzer"] = {}
     }
 }
+
+
