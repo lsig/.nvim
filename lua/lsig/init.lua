@@ -1,6 +1,7 @@
 require("lsig.set")
 require("lsig.lspsaga")
 require("lsig.lspconfig")
+require("lsig.null-ls")
 require("lsig.cmp")
 require("lsig.tree")
 require("lsig.telescope")

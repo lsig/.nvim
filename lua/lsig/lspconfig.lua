@@ -7,6 +7,16 @@ require("mason-lspconfig").setup({
         "tsserver"
     }
 })
+local mason-null-ls = require("mason-null-ls")
+
+mason-null-ls.setup({
+    ensure_installed = {
+        "prettier",
+        "stylua",
+        "eslint_d",
+        "pylint"
+    }
+})
 
 local lsp_flags = {
   -- This is the default in Nvim 0.7+
