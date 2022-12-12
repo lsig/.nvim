@@ -23,6 +23,7 @@ return require("packer").startup(function(use)
 		tag = "0.1.0",
 		requires = { { "nvim-lua/plenary.nvim" } },
 	})
+	use("BurntSushi/ripgrep")
 	use({
 		"nvim-tree/nvim-tree.lua",
 		requires = {
