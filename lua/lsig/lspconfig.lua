@@ -7,9 +7,9 @@ require("mason-lspconfig").setup({
         "tsserver"
     }
 })
-local mason-null-ls = require("mason-null-ls")
+local mason_null_ls = require("mason-null-ls")
 
-mason-null-ls.setup({
+mason_null_ls.setup({
     ensure_installed = {
         "prettier",
         "stylua",
