@@ -56,6 +56,7 @@ return require("packer").startup(function(use)
 	})
 	use("christoomey/vim-tmux-navigator")
 	use("tpope/vim-surround")
+	use("tpope/vim-fugitive")
 	use("vim-scripts/ReplaceWithRegister")
 	use({
 		"numToStr/Comment.nvim",
