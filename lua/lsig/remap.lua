@@ -34,32 +34,19 @@ nnoremap("<leader>Y", '"+Y')
 nnoremap("Q", "<nop>")
 
 -- lspsaga
--- show definition, references
-nnoremap("gf", "<silent>:Lspsaga lsp_finder<CR>")
--- got to declaration
-nnoremap("gD", "<cmd>:lua vim.lsp.buf.declaration()<CR>")
--- see definition and make edits in window
-nnoremap("gd", "<silent>:Lspsaga peek_definition<CR>")
--- go to implementation
-nnoremap("gi", "<cmd>lua vim.lsp.buf.implementation()<CR>")
--- see available code actions
-nnoremap("<leader>ca", "<silent>:Lspsaga code_action<CR>")
--- smart rename
-nnoremap("<leader>rn", "<silent>:Lspsaga rename<CR>")
--- show  diagnostics for line
-nnoremap("<leader>D", "<silent>:Lspsaga show_line_diagnostics<CR>")
--- show diagnostics for cursor
-nnoremap("<leader>d", "<silent>:Lspsaga show_cursor_diagnostics<CR>")
--- jump to previous diagnostic in buffer
-nnoremap("[d", "<silent>:Lspsaga diagnostic_jump_prev<CR>")
--- jump to next diagnostic in buffer
-nnoremap("]d", "<silent>:Lspsaga diagnostic_jump_next<CR>")
--- show documentation for what is under cursor
-nnoremap("K", "<silent>:Lspsaga hover_doc<CR>")
--- see outline on right hand side
-nnoremap("<leader>o", "<cmd>LSoutlineToggle<CR>")
--- Float terminal
-nnoremap("<A-d>", "<silent>:Lspsaga open_floatterm")
+nnoremap("gf", "<cmd>:Lspsaga lsp_finder<CR>", { silent = true }) -- show definition, references
+nnoremap("gD", "<cmd>:lua vim.lsp.buf.declaration()<CR>") -- got to declaration
+nnoremap("gd", "<cmd>:Lspsaga peek_definition<CR>", { silent = true }) -- see definition and make edits in window
+nnoremap("gi", "<cmd>lua vim.lsp.buf.implementation()<CR>") -- go to implementation
+nnoremap("<leader>ca", "<cmd>:Lspsaga code_action<CR>", { silent = true }) -- see available code actions
+nnoremap("<leader>rn", "<cmd>:Lspsaga rename<CR>", { silent = true }) -- smart rename
+nnoremap("<leader>D", "<cmd>:Lspsaga show_line_diagnostics<CR>", { silent = true }) -- show  diagnostics for line
+nnoremap("<leader>d", "<cmd>:Lspsaga show_cursor_diagnostics<CR>", { silent = true }) -- show diagnostics for cursor
+nnoremap("[d", "<cmd>:Lspsaga diagnostic_jump_prev<CR>", { silent = true }) -- jump to previous diagnostic in buffer
+nnoremap("]d", "<cmd>:Lspsaga diagnostic_jump_next<CR>", { silent = true }) -- jump to next diagnostic in buffer
+nnoremap("K", "<cmd>:Lspsaga hover_doc<CR>", { silent = true }) -- show documentation for what is under cursor
+nnoremap("<leader>o", "<cmd>:Lspsaga outline<CR>", { silent = true }) -- see outline on right hand side
+nnoremap("<A-d>", "<cmd>:Lspsaga open_floatterm<CR>", { silent = true }) -- Float terminal
 
 -- insert mode remaps
 inoremap("jk", "<ESC>")
