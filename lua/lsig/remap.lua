@@ -1,6 +1,7 @@
 local nnoremap = require("lsig.keymap").nnoremap
 local inoremap = require("lsig.keymap").inoremap
 local vnoremap = require("lsig.keymap").vnoremap
+local xnoremap = require("lsig.keymap").xnoremap
 
 -- normal mode remaps
 nnoremap("<leader>ff", "<cmd>lua require('telescope.builtin').find_files()<CR>")
@@ -23,9 +24,22 @@ nnoremap("<leader>tp", "<cmd>:tabp<CR>")
 
 nnoremap("<leader>gs", "<cmd>:Git<CR>")
 
+nnoremap("J", "mzJ`z")
+nnoremap("<C-d>", "C-d>zz")
+nnoremap("<C-u>", "C-u>zz")
+nnoremap("n", "nzzzv")
+nnoremap("N", "Nzzzv")
+nnoremap("<leader>y", '"+y')
+nnoremap("<leader>Y", '"+Y')
+nnoremap("Q", "<nop>")
+
 -- insert mode remaps
 inoremap("jk", "<ESC>")
 
 -- visual mode remaps
 vnoremap("J", ":m '>+1<CR>gv=gv")
 vnoremap("K", ":m '<-2<CR>gv=gv")
+vnoremap("<leader>y", '"+y')
+
+-- x mode remaps
+xnoremap("<leader>p", '"_dP')
