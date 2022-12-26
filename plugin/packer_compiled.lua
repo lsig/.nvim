@@ -110,6 +110,11 @@ _G.packer_plugins = {
     path = "/Users/logisigurdarson/.local/share/nvim/site/pack/packer/start/cmp-path",
     url = "https://github.com/hrsh7th/cmp-path"
   },
+  harpoon = {
+    loaded = true,
+    path = "/Users/logisigurdarson/.local/share/nvim/site/pack/packer/start/harpoon",
+    url = "https://github.com/ThePrimeagen/harpoon"
+  },
   ["lspkind.nvim"] = {
     loaded = true,
     path = "/Users/logisigurdarson/.local/share/nvim/site/pack/packer/start/lspkind.nvim",

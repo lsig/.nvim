@@ -18,12 +18,14 @@ return require("packer").startup(function(use)
 			ts_update()
 		end,
 	})
+	-- Telescope
 	use({
 		"nvim-telescope/telescope.nvim",
 		tag = "0.1.0",
 		requires = { { "nvim-lua/plenary.nvim" } },
 	})
 	use("BurntSushi/ripgrep")
+	-- Nvim tree / file navigation
 	use({
 		"nvim-tree/nvim-tree.lua",
 		requires = {
@@ -31,6 +33,8 @@ return require("packer").startup(function(use)
 		},
 		tag = "nightly", -- optional, updated every week. (see issue #1193)
 	})
+	use("ThePrimeagen/harpoon")
+	-- Autocomplete
 	use("hrsh7th/nvim-cmp")
 	use("hrsh7th/cmp-nvim-lsp")
 	use("hrsh7th/cmp-buffer")
@@ -46,14 +50,17 @@ return require("packer").startup(function(use)
 	use("L3MON4D3/LuaSnip")
 	use("jose-elias-alvarez/null-ls.nvim")
 	use("jayp0521/mason-null-ls.nvim")
+	-- lualine
 	use({
 		"nvim-lualine/lualine.nvim",
 		requires = { "kyazdani42/nvim-web-devicons", opt = true },
 	})
+	-- lspsaga
 	use({
 		"glepnir/lspsaga.nvim",
 		branch = "main",
 	})
+	-- Tpope
 	use("christoomey/vim-tmux-navigator")
 	use("tpope/vim-surround")
 	use("tpope/vim-fugitive")
