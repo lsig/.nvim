@@ -195,6 +195,11 @@ _G.packer_plugins = {
     path = "/Users/logisigurdarson/.local/share/nvim/site/pack/packer/start/ripgrep",
     url = "https://github.com/BurntSushi/ripgrep"
   },
+  ["telescope-fzf-native.nvim"] = {
+    loaded = true,
+    path = "/Users/logisigurdarson/.local/share/nvim/site/pack/packer/start/telescope-fzf-native.nvim",
+    url = "https://github.com/nvim-telescope/telescope-fzf-native.nvim"
+  },
   ["telescope.nvim"] = {
     loaded = true,
     path = "/Users/logisigurdarson/.local/share/nvim/site/pack/packer/start/telescope.nvim",

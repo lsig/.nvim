@@ -49,7 +49,7 @@ nnoremap("<leader>o", "<cmd>:Lspsaga outline<CR>", { silent = true }) -- see out
 nnoremap("<A-d>", "<cmd>:Lspsaga open_floatterm<CR>", { silent = true }) -- Float terminal
 
 -- insert mode remaps
-inoremap("jk", "<ESC>")
+inoremap("<C-c>", "<ESC>")
 
 -- visual mode remaps
 vnoremap("J", ":m '>+1<CR>gv=gv")
