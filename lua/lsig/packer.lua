@@ -60,15 +60,10 @@ return require("packer").startup(function(use)
 		"glepnir/lspsaga.nvim",
 		branch = "main",
 	})
-	-- Tpope
-	use("christoomey/vim-tmux-navigator")
-	use("tpope/vim-surround")
+	-- Tpope and more
 	use("tpope/vim-fugitive")
+	use("tpope/vim-surround")
+	use("tpope/vim-commentary")
+	use("christoomey/vim-tmux-navigator")
 	use("vim-scripts/ReplaceWithRegister")
-	use({
-		"numToStr/Comment.nvim",
-		config = function()
-			require("Comment").setup()
-		end,
-	})
 end)
