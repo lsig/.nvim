@@ -4,6 +4,9 @@ require("mason-lspconfig").setup({
 		"sumneko_lua",
 		"rust_analyzer",
 		"pyright",
+		"clangd",
+		"html",
+		"cssls",
 		"tsserver",
 	},
 })
@@ -26,7 +29,19 @@ require("lspconfig")["pyright"].setup({
 	on_attach = on_attach,
 	flags = lsp_flags,
 })
+require("lspconfig")["html"].setup({
+	on_attach = on_attach,
+	flags = lsp_flags,
+})
+require("lspconfig")["cssls"].setup({
+	on_attach = on_attach,
+	flags = lsp_flags,
+})
 require("lspconfig")["tsserver"].setup({
+	on_attach = on_attach,
+	flags = lsp_flags,
+})
+require("lspconfig")["clangd"].setup({
 	on_attach = on_attach,
 	flags = lsp_flags,
 })
