@@ -18,6 +18,13 @@ return require("packer").startup(function(use)
 			ts_update()
 		end,
 	})
+	use({
+		"glepnir/lspsaga.nvim",
+		branch = "main",
+		config = function()
+			require("lspsaga").setup({})
+		end,
+	})
 	-- Telescope
 	use({
 		"nvim-telescope/telescope.nvim",
@@ -53,11 +60,6 @@ return require("packer").startup(function(use)
 	use({
 		"nvim-lualine/lualine.nvim",
 		requires = { "kyazdani42/nvim-web-devicons", opt = true },
-	})
-	-- lspsaga
-	use({
-		"glepnir/lspsaga.nvim",
-		branch = "main",
 	})
 	-- Tpope and more
 	use("tpope/vim-fugitive")
