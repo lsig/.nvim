@@ -9,6 +9,7 @@ null_ls.setup({
 		null_ls.builtins.formatting.prettier,
 		null_ls.builtins.diagnostics.pyproject_flake8,
 		null_ls.builtins.completion.spell,
+		null_ls.builtins.completion.luasnip,
 		null_ls.builtins.diagnostics.eslint_d.with({ -- js/ts linter
 			condition = function(utils)
 				return utils.root_has_file(".eslintrc.js") -- change file extension if you use something else

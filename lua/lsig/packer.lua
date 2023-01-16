@@ -54,6 +54,7 @@ return require("packer").startup(function(use)
 	})
 	use("windwp/nvim-ts-autotag")
 	use("L3MON4D3/LuaSnip")
+	use("saadparwaiz1/cmp_luasnip")
 	use("jose-elias-alvarez/null-ls.nvim")
 	use("jayp0521/mason-null-ls.nvim")
 	-- lualine
