@@ -17,12 +17,11 @@ null_ls.setup({
 		null_ls.builtins.formatting.stylua,
 		null_ls.builtins.formatting.prettierd,
 		null_ls.builtins.formatting.rustfmt,
-        null_ls.builtins.formatting.tidy,
+		null_ls.builtins.formatting.tidy,
 		null_ls.builtins.completion.spell,
 		null_ls.builtins.completion.luasnip,
-        null_ls.builtins.diagnostics.cppcheck,
-        null_ls.builtins.diagnostics.cpplint,
-		null_ls.builtins.diagnostics.pyproject_flake8,
+		null_ls.builtins.diagnostics.cpplint,
+		null_ls.builtins.diagnostics.pylint,
 		null_ls.builtins.diagnostics.eslint_d.with({ -- js/ts linter
 			condition = function(utils)
 				return utils.root_has_file(".eslintrc.js") -- change file extension if you use something else
