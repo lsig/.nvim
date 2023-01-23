@@ -23,10 +23,13 @@ nnoremap("<leader>tn", "<cmd>:tabn<CR>")
 nnoremap("<leader>tp", "<cmd>:tabp<CR>")
 
 nnoremap("<leader>gs", "<cmd>:Git<CR>")
+nnoremap("<leader>hp", "<cmd>:Gitsigns preview_hunk<CR>")
+
+nnoremap("<leader>pv", "<cmd>:Ex<CR>")
 
 nnoremap("J", "mzJ`z")
-nnoremap("<C-d>", "C-d>zz")
-nnoremap("<C-u>", "C-u>zz")
+nnoremap("<C-d>", "<C-d>zz")
+nnoremap("<C-u>", "<C-u>zz")
 nnoremap("n", "nzzzv")
 nnoremap("N", "Nzzzv")
 nnoremap("<leader>y", '"+y')

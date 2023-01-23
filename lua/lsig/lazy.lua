@@ -42,14 +42,6 @@ return require("lazy").setup({
 		dependencies = { { "nvim-lua/plenary.nvim" } },
 	},
 	{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
-	-- Nvim tree / file navigation
-	{
-		"nvim-tree/nvim-tree.lua",
-		dependencies = {
-			"nvim-tree/nvim-web-devicons", -- optional, for file icons
-		},
-		version = "nightly", -- optional, updated every week. (see issue #1193)
-	},
 	-- Autocomplete
 	{ "L3MON4D3/LuaSnip", version = "v<CurrentMajor>.*" },
 	{
@@ -80,12 +72,19 @@ return require("lazy").setup({
 		"nvim-lualine/lualine.nvim",
 		dependencies = { "nvim-tree/nvim-web-devicons" },
 	},
-	-- Tpope and more
+	-- git integration
 	{ "tpope/vim-fugitive", event = "VeryLazy" },
+	{
+		"lewis6991/gitsigns.nvim",
+		event = "VeryLazy",
+		config = function()
+			require("gitsigns").setup()
+		end,
+	},
+	-- Tpope and more
 	{ "tpope/vim-surround", event = "VeryLazy" },
 	{ "tpope/vim-commentary", event = "VeryLazy" },
 	{ "ThePrimeagen/harpoon", event = "VeryLazy" },
-	{ "ThePrimeagen/refactoring.nvim", event = "VeryLazy" },
 	"christoomey/vim-tmux-navigator",
 	"vim-scripts/ReplaceWithRegister",
 })
