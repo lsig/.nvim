@@ -27,6 +27,8 @@ nnoremap("<leader>hp", "<cmd>:Gitsigns preview_hunk<CR>")
 
 nnoremap("<leader>pv", "<cmd>:Ex<CR>")
 
+nnoremap("<leader>oc", "<cmd>:ChatGPTEditWithInstructions<CR>")
+
 nnoremap("J", "mzJ`z")
 nnoremap("<C-d>", "<C-d>zz")
 nnoremap("<C-u>", "<C-u>zz")
