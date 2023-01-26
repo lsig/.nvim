@@ -81,22 +81,6 @@ return require("lazy").setup({
 			require("gitsigns").setup()
 		end,
 	},
-	--GPT
-	-- Packer
-	{
-		"jackMort/ChatGPT.nvim",
-		event = "VeryLazy",
-		config = function()
-			require("chatgpt").setup({
-				-- optional configuration
-			})
-		end,
-		dependencies = {
-			"MunifTanjim/nui.nvim",
-			"nvim-lua/plenary.nvim",
-			"nvim-telescope/telescope.nvim",
-		},
-	},
 	-- Tpope and more
 	{ "tpope/vim-surround", event = "VeryLazy" },
 	{ "tpope/vim-commentary", event = "VeryLazy" },
