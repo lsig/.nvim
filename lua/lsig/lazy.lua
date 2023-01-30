@@ -43,7 +43,14 @@ return require("lazy").setup({
 	},
 	{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
 	-- Autocomplete
-	{ "L3MON4D3/LuaSnip", version = "v<CurrentMajor>.*" },
+	{
+		"L3MON4D3/LuaSnip",
+		-- follow latest release.
+		version = "<CurrentMajor>.*",
+		-- install jsregexp (optional!).
+		build = "make install_jsregexp",
+	},
+	"rafamadriz/friendly-snippets",
 	{
 		"hrsh7th/nvim-cmp",
 		dependencies = {

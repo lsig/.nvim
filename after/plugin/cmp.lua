@@ -1,5 +1,6 @@
 -- Set up nvim-cmp.
 local cmp = require("cmp")
+local luasnip = require("luasnip")
 local lspkind = require("lspkind")
 
 cmp.setup({
@@ -21,6 +22,21 @@ cmp.setup({
 		["<Tab>"] = cmp.mapping.select_next_item(),
 		["<S-Tab>"] = cmp.mapping.select_prev_item(),
 		["<CR>"] = cmp.mapping.confirm({ select = true }),
+		["<C-k"] = cmp.mapping(function()
+			if luasnip.expand_or_jumpable() then
+				luasnip.expand_or_jump()
+			end
+		end, { "i", "s" }),
+		["<C-j"] = cmp.mapping(function()
+			if luasnip.jumpable(-1) then
+				luasnip.jump(-1)
+			end
+		end, { "i", "s" }),
+		["<C-l"] = cmp.mapping(function()
+			if luasnip.choice_active then
+				luasnip.change_choice(1)
+			end
+		end, { "i", "s" }),
 	}),
 	sources = cmp.config.sources({
 		{ name = "nvim_lsp" },
@@ -79,5 +95,8 @@ require("lspconfig")["cssls"].setup({
 	capabilities = capabilities,
 })
 require("lspconfig")["tsserver"].setup({
+	capabilities = capabilities,
+})
+require("lspconfig")["sumneko_lua"].setup({
 	capabilities = capabilities,
 })
