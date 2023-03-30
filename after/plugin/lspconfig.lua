@@ -1,7 +1,7 @@
 require("mason").setup()
 require("mason-lspconfig").setup({
 	ensure_installed = {
-		"sumneko_lua",
+		"lua_ls",
 		"rust_analyzer",
 		"pyright",
 		"clangd",
@@ -15,7 +15,7 @@ local mason_null_ls = require("mason-null-ls")
 
 mason_null_ls.setup({
 	ensure_installed = {
-		"prettier",
+		"prettierd",
 		"stylua",
 		"eslint_d",
 		"pyproject_flake8",
@@ -73,7 +73,7 @@ require("lspconfig")["rust_analyzer"].setup({
 	},
 })
 
-require("lspconfig")["sumneko_lua"].setup({
+require("lspconfig")["lua_ls"].setup({
 	settings = {
 		Lua = {
 			runtime = {
