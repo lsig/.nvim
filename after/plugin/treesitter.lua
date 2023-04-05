@@ -10,6 +10,7 @@ require("nvim-treesitter.configs").setup({
 		"css",
 		"html",
 		"markdown",
+		"markdown_inline",
 	},
 	auto_install = true,
 	sync_install = false,
