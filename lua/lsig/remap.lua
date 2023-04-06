@@ -9,8 +9,7 @@ nnoremap("<leader>fg", "<cmd>lua require('telescope.builtin').live_grep()<CR>")
 nnoremap("<leader>fb", "<cmd>lua require('telescope.builtin').buffers()<CR>")
 nnoremap("<leader>fh", "<cmd>lua require('telescope.builtin').help_tags()<CR>")
 
-nnoremap("<leader>ot", "<cmd>:NvimTreeOpen<CR>")
-nnoremap("<leader>ct", "<cmd>:NvimTreeClose<CR>")
+nnoremap("<leader>cd", "<cmd>:cd %:p:h<CR>")
 
 nnoremap("<leader>sv", "<C-w>v")
 nnoremap("<leader>sh", "<C-w>s")
@@ -26,7 +25,6 @@ nnoremap("<leader>gs", "<cmd>:Git<CR>")
 nnoremap("<leader>hp", "<cmd>:Gitsigns preview_hunk<CR>")
 
 nnoremap("<leader>pv", "<cmd>:Ex<CR>")
-
 nnoremap("<leader>oc", "<cmd>:ChatGPTEditWithInstructions<CR>")
 
 nnoremap("J", "mzJ`z")

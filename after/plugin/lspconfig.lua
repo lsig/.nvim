@@ -22,6 +22,9 @@ mason_null_ls.setup({
 	},
 })
 
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities.textDocument.completion.completionItem.snippetSupport = true
+
 local lsp_flags = {
 	-- This is the default in Nvim 0.7+
 	debounce_text_changes = 150,
@@ -32,10 +35,12 @@ require("lspconfig")["pyright"].setup({
 })
 require("lspconfig")["html"].setup({
 	on_attach = on_attach,
+	capabilities = capabilities,
 	flags = lsp_flags,
 })
 require("lspconfig")["cssls"].setup({
 	on_attach = on_attach,
+	capabilities = capabilities,
 	flags = lsp_flags,
 })
 require("lspconfig")["tsserver"].setup({
@@ -97,11 +102,7 @@ require("lspconfig")["lua_ls"].setup({
 	},
 })
 
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities.textDocument.completion.completionItem.snippetSupport = true
-
 require("lspconfig").emmet_ls.setup({
-	on_attach = on_attach,
 	capabilities = capabilities,
 	filetypes = { "html", "typescriptreact", "javascriptreact", "css", "sass", "scss", "less" },
 	init_options = {
