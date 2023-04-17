@@ -103,7 +103,7 @@ return require("lazy").setup({
 	{ "tpope/vim-fugitive", event = "VeryLazy" },
 	{
 		"lewis6991/gitsigns.nvim",
-		event = "VeryLazy",
+		event = "BufEnter",
 		config = function()
 			require("gitsigns").setup()
 		end,
@@ -112,6 +112,7 @@ return require("lazy").setup({
 	{ "tpope/vim-surround", event = "VeryLazy" },
 	{ "tpope/vim-commentary", event = "VeryLazy" },
 	{ "ThePrimeagen/harpoon", event = "VeryLazy" },
+	{ "JellyApple102/easyread.nvim" },
 	"christoomey/vim-tmux-navigator",
 	"vim-scripts/ReplaceWithRegister",
 })
