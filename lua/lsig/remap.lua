@@ -4,10 +4,10 @@ local vnoremap = require("lsig.keymap").vnoremap
 local xnoremap = require("lsig.keymap").xnoremap
 
 -- normal mode remaps
-nnoremap("<leader>ff", "<cmd>lua require('telescope.builtin').find_files()<CR>")
-nnoremap("<leader>gf", "<cmd>lua require('telescope.builtin').git_files()<CR>")
-nnoremap("<leader>fg", "<cmd>lua require('telescope.builtin').live_grep()<CR>")
-nnoremap("<leader>fb", "<cmd>lua require('telescope.builtin').buffers()<CR>")
+nnoremap("<leader>sf", "<cmd>lua require('telescope.builtin').find_files()<CR>")
+nnoremap("<leader>sg", "<cmd>lua require('telescope.builtin').git_files()<CR>")
+nnoremap("<leader>lg", "<cmd>lua require('telescope.builtin').live_grep()<CR>")
+nnoremap("<leader>sb", "<cmd>lua require('telescope.builtin').buffers()<CR>")
 nnoremap("<leader>fh", "<cmd>lua require('telescope.builtin').help_tags()<CR>")
 
 nnoremap("<leader>cd", "<cmd>:cd %:p:h<CR>")
@@ -26,7 +26,6 @@ nnoremap("<leader>gs", "<cmd>:Git<CR>")
 nnoremap("<leader>hp", "<cmd>:Gitsigns preview_hunk<CR>")
 
 nnoremap("<leader>pv", "<cmd>:Ex<CR>")
-nnoremap("<leader>oc", "<cmd>:ChatGPTEditWithInstructions<CR>")
 
 nnoremap("J", "mzJ`z")
 nnoremap("<C-d>", "<C-d>zz")
