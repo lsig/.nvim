@@ -65,7 +65,7 @@ return require("lazy").setup({
 	{
 		"L3MON4D3/LuaSnip",
 		-- follow latest release.
-		version = "<CurrentMajor>.*",
+		version = "1.2.*",
 		-- install jsregexp (optional!).
 		build = "make install_jsregexp",
 	},
