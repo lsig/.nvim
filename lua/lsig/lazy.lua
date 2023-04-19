@@ -12,7 +12,6 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 return require("lazy").setup({
-	-- Packer can manage itself
 	"folke/tokyonight.nvim",
 	-- lsp config
 	{

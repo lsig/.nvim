@@ -18,7 +18,6 @@ null_ls.setup({
 		null_ls.builtins.formatting.prettierd,
 		null_ls.builtins.formatting.rustfmt,
 		null_ls.builtins.formatting.clang_format,
-		null_ls.builtins.completion.spell,
 		null_ls.builtins.completion.luasnip,
 		null_ls.builtins.diagnostics.cpplint,
 		null_ls.builtins.diagnostics.pylint,
