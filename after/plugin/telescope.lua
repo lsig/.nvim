@@ -1,5 +1,12 @@
 require("telescope").setup({
 	defaults = {
+		file_ignore_patterns = {
+			"node_modules",
+			".git",
+			"dist",
+			"yarn.lock",
+			"profile_list_images",
+		},
 		-- Default configuration for telescope goes here:
 		-- config_key = value,
 		mappings = {
