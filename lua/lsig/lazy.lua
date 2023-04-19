@@ -13,13 +13,18 @@ vim.opt.rtp:prepend(lazypath)
 
 return require("lazy").setup({
 	"folke/tokyonight.nvim",
-	-- lsp config
-	{
-		"williamboman/mason.nvim",
-		"williamboman/mason-lspconfig.nvim",
+	{ -- LSP Configuration & Plugins
 		"neovim/nvim-lspconfig",
+		dependencies = {
+			-- Automatically install LSPs to stdpath for neovim
+			{ "williamboman/mason.nvim", config = true },
+			"williamboman/mason-lspconfig.nvim",
+			"onsails/lspkind.nvim",
+
+			-- Additional lua configuration, makes nvim stuff amazing!
+			"folke/neodev.nvim",
+		},
 	},
-	"onsails/lspkind.nvim",
 	{
 		"nvim-treesitter/nvim-treesitter",
 		build = function()
@@ -101,18 +106,26 @@ return require("lazy").setup({
 	},
 	-- git integration
 	{ "tpope/vim-fugitive", event = "VeryLazy" },
-	{
+	{ -- Adds git releated signs to the gutter, as well as utilities for managing changes
 		"lewis6991/gitsigns.nvim",
 		event = "BufEnter",
-		config = function()
-			require("gitsigns").setup()
-		end,
+		opts = {
+			-- See `:help gitsigns.txt`
+			signs = {
+				add = { text = "+" },
+				change = { text = "~" },
+				delete = { text = "_" },
+				topdelete = { text = "‾" },
+				changedelete = { text = "~" },
+			},
+		},
 	},
 	-- Tpope and more
 	{ "tpope/vim-surround", event = "VeryLazy" },
 	{ "tpope/vim-commentary", event = "VeryLazy" },
+	{ "tpope/vim-sleuth", event = "VeryLazy" },
 	{ "ThePrimeagen/harpoon", event = "VeryLazy" },
 	{ "JellyApple102/easyread.nvim" },
-	"christoomey/vim-tmux-navigator",
-	"vim-scripts/ReplaceWithRegister",
+	{ "christoomey/vim-tmux-navigator" },
+	{ "vim-scripts/ReplaceWithRegister" },
 })
