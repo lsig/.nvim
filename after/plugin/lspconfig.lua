@@ -1,61 +1,18 @@
 require("mason").setup()
-require("mason-lspconfig").setup({
-	ensure_installed = {
-		"lua_ls",
-		"rust_analyzer",
-		"pyright",
-		"clangd",
-		"html",
-		"cssls",
-		"tsserver",
-	},
-})
-
-local mason_null_ls = require("mason-null-ls")
-
-mason_null_ls.setup({
-	ensure_installed = {
-		"prettierd",
-		"stylua",
-		"eslint_d",
-		"pyproject_flake8",
-	},
-})
+require("lsig.keymap")
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
+
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 
-local lsp_flags = {
-	-- This is the default in Nvim 0.7+
-	debounce_text_changes = 150,
-}
-require("lspconfig")["pyright"].setup({
-	on_attach = on_attach,
-	flags = lsp_flags,
-})
-require("lspconfig")["html"].setup({
-	on_attach = on_attach,
-	capabilities = capabilities,
-	flags = lsp_flags,
-})
-require("lspconfig")["cssls"].setup({
-	on_attach = on_attach,
-	capabilities = capabilities,
-	flags = lsp_flags,
-})
-require("lspconfig")["tsserver"].setup({
-	on_attach = on_attach,
-	flags = lsp_flags,
-})
-require("lspconfig")["clangd"].setup({
-	on_attach = on_attach,
-	flags = lsp_flags,
-})
-require("lspconfig")["rust_analyzer"].setup({
-	on_attach = on_attach,
-	flags = lsp_flags,
-	-- Server-specific settings...
-	settings = {
+local servers = {
+	pyright = {},
+	html = {},
+	cssls = {},
+	tsserver = {},
+	clangd = {},
+	rust_analyzer = {
 		["rust-analyzer"] = {
 			checkOnSave = {
 				command = "clippy",
@@ -76,10 +33,7 @@ require("lspconfig")["rust_analyzer"].setup({
 			},
 		},
 	},
-})
-
-require("lspconfig")["lua_ls"].setup({
-	settings = {
+	lua_ls = {
 		Lua = {
 			runtime = {
 				-- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
@@ -100,17 +54,41 @@ require("lspconfig")["lua_ls"].setup({
 			},
 		},
 	},
-})
-
-require("lspconfig").emmet_ls.setup({
-	capabilities = capabilities,
-	filetypes = { "html", "typescriptreact", "javascriptreact", "css", "sass", "scss", "less" },
-	init_options = {
-		html = {
-			options = {
-				-- For possible options, see: https://github.com/emmetio/emmet/blob/master/src/config.ts#L79-L267
-				["bem.enabled"] = true,
+	emmet_ls = {
+		filetypes = { "html", "typescriptreact", "javascriptreact", "css", "sass", "scss", "less" },
+		init_options = {
+			html = {
+				options = {
+					-- For possible options, see: https://github.com/emmetio/emmet/blob/master/src/config.ts#L79-L267
+					["bem.enabled"] = true,
+				},
 			},
 		},
+	},
+}
+
+local mason_lspconfig = require("mason-lspconfig")
+
+mason_lspconfig.setup({
+	ensure_installed = vim.tbl_keys(servers),
+})
+
+mason_lspconfig.setup_handlers({
+	function(server_name)
+		require("lspconfig")[server_name].setup({
+			capabilities = capabilities,
+			settings = servers[server_name],
+		})
+	end,
+})
+
+local mason_null_ls = require("mason-null-ls")
+
+mason_null_ls.setup({
+	ensure_installed = {
+		"prettierd",
+		"stylua",
+		"eslint_d",
+		"pyproject_flake8",
 	},
 })
