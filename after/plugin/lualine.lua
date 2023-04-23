@@ -23,6 +23,7 @@ require("lualine").setup({
 		lualine_c = {
 			{ "buffers", symbols = {
 				alternate_file = "# ",
+				directory = false,
 			} },
 		},
 		lualine_x = { "encoding", "filetype" },
@@ -40,5 +41,5 @@ require("lualine").setup({
 	tabline = {},
 	winbar = {},
 	inactive_winbar = {},
-	extensions = {},
+	extensions = { "fugitive", "fzf" },
 })
