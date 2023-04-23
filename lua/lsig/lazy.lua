@@ -12,7 +12,7 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 return require("lazy").setup({
-	"folke/tokyonight.nvim",
+	{ "folke/tokyonight.nvim" },
 	{ -- LSP Configuration & Plugins
 		"neovim/nvim-lspconfig",
 		dependencies = {
@@ -63,7 +63,7 @@ return require("lazy").setup({
 	-- Telescope
 	{
 		"nvim-telescope/telescope.nvim",
-		version = "0.1.0",
+		version = "0.1.1",
 		dependencies = { { "nvim-lua/plenary.nvim" } },
 	},
 	{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
