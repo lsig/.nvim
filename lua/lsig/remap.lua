@@ -15,12 +15,18 @@ nnoremap("<leader>cd", "<cmd>:cd %:p:h<CR>")
 nnoremap("<leader>sv", "<C-w>v")
 nnoremap("<leader>sh", "<C-w>s")
 nnoremap("<leader>se", "<C-w>=")
+nnoremap("<leader>s-", "<cmd>vertical resize -5<CR>")
+nnoremap("<leader>s+", "<cmd>vertical resize +5<CR>")
 nnoremap("<leader>sx", "<cmd>:close<CR>")
 
 nnoremap("<leader>to", "<cmd>:tabnew<CR>")
 nnoremap("<leader>tx", "<cmd>:tabclose<CR>")
 nnoremap("<leader>tn", "<cmd>:tabn<CR>")
 nnoremap("<leader>tp", "<cmd>:tabp<CR>")
+
+nnoremap("<leader>bn", "<cmd>:bnext<CR>")
+nnoremap("<leader>bp", "<cmd>:bprevious<CR>")
+nnoremap("<leader>bx", "<cmd>:bdelete<CR>")
 
 nnoremap("<leader>gs", "<cmd>:Git<CR>")
 nnoremap("<leader>hp", "<cmd>:Gitsigns preview_hunk<CR>")
