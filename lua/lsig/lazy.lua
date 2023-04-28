@@ -121,10 +121,15 @@ return require("lazy").setup({
 		},
 	},
 	-- Tpope and more
-	{ "tpope/vim-surround", event = "VeryLazy" },
 	{ "tpope/vim-sleuth", event = "VeryLazy" },
+	{ "echasnovski/mini.surround", version = false },
 	{ "ThePrimeagen/harpoon", event = "VeryLazy" },
 	{ "numToStr/Comment.nvim", opts = {} },
+	{
+		"folke/todo-comments.nvim",
+		dependencies = "nvim-lua/plenary.nvim",
+		opts = {},
+	},
 	{ "JellyApple102/easyread.nvim" },
 	{ "christoomey/vim-tmux-navigator" },
 	{ "vim-scripts/ReplaceWithRegister" },
