@@ -21,10 +21,13 @@ require("lualine").setup({
 		lualine_a = { "mode" },
 		lualine_b = { "branch", "diff", "diagnostics" },
 		lualine_c = {
-			{ "buffers", symbols = {
-				alternate_file = "# ",
-				directory = false,
-			} },
+			{
+				"buffers",
+				symbols = {
+					alternate_file = "# ",
+					directory = false,
+				},
+			},
 		},
 		lualine_x = { "encoding", "filetype" },
 		lualine_y = { "progress" },

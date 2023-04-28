@@ -13,6 +13,7 @@ local servers = {
 	cssls = {},
 	tsserver = {},
 	clangd = {},
+	sqlls = {},
 	rust_analyzer = {
 		["rust-analyzer"] = {
 			checkOnSave = {
@@ -91,5 +92,6 @@ mason_null_ls.setup({
 		"stylua",
 		"eslint_d",
 		"pyproject_flake8",
+		"sqlfmt",
 	},
 })
