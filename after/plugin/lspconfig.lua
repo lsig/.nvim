@@ -16,24 +16,22 @@ local servers = {
 	sqlls = {},
 	tailwindcss = {},
 	rust_analyzer = {
-		["rust-analyzer"] = {
-			checkOnSave = {
-				command = "clippy",
+		checkOnSave = {
+			command = "clippy",
+		},
+		imports = {
+			granularity = {
+				group = "module",
 			},
-			imports = {
-				granularity = {
-					group = "module",
-				},
-				prefix = "self",
-			},
-			cargo = {
-				buildScripts = {
-					enable = true,
-				},
-			},
-			procMacro = {
+			prefix = "self",
+		},
+		cargo = {
+			buildScripts = {
 				enable = true,
 			},
+		},
+		procMacro = {
+			enable = true,
 		},
 	},
 	lua_ls = {
