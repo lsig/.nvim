@@ -25,12 +25,12 @@ return require("lazy").setup({
 			"folke/neodev.nvim",
 		},
 	},
-	{
+	{ -- Highlight, edit, and navigate code
 		"nvim-treesitter/nvim-treesitter",
-		build = function()
-			local ts_update = require("nvim-treesitter.install").update({ with_sync = true })
-			ts_update()
-		end,
+		dependencies = {
+			"nvim-treesitter/nvim-treesitter-textobjects",
+		},
+		build = ":TSUpdate",
 	},
 	{
 		"glepnir/lspsaga.nvim",
@@ -63,10 +63,16 @@ return require("lazy").setup({
 	-- Telescope
 	{
 		"nvim-telescope/telescope.nvim",
-		version = "0.1.1",
+		version = "*",
 		dependencies = { { "nvim-lua/plenary.nvim" } },
 	},
-	{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
+	{
+		"nvim-telescope/telescope-fzf-native.nvim",
+		build = "make",
+		cond = function()
+			return vim.fn.executable("make") == 1
+		end,
+	},
 	-- Autocomplete
 	{
 		"L3MON4D3/LuaSnip",
@@ -75,7 +81,7 @@ return require("lazy").setup({
 		-- install jsregexp (optional!).
 		build = "make install_jsregexp",
 	},
-	"rafamadriz/friendly-snippets",
+	{ "rafamadriz/friendly-snippets", event = "VeryLazy" },
 	{
 		"hrsh7th/nvim-cmp",
 		dependencies = {
@@ -88,11 +94,13 @@ return require("lazy").setup({
 	},
 	{
 		"windwp/nvim-autopairs",
-		config = function()
-			require("nvim-autopairs").setup({})
-		end,
+		-- config = function()
+		-- 	require("nvim-autopairs").setup({})
+		-- end,
+		opts = {},
+		event = "VeryLazy",
 	},
-	"windwp/nvim-ts-autotag",
+	{ "windwp/nvim-ts-autotag", event = "VeryLazy" },
 	--null ls
 	{
 		"jose-elias-alvarez/null-ls.nvim",
@@ -129,8 +137,9 @@ return require("lazy").setup({
 		"folke/todo-comments.nvim",
 		dependencies = "nvim-lua/plenary.nvim",
 		opts = {},
+		event = "VeryLazy",
 	},
-	{ "JellyApple102/easyread.nvim" },
-	{ "christoomey/vim-tmux-navigator" },
-	{ "vim-scripts/ReplaceWithRegister" },
+	{ "JellyApple102/easyread.nvim", event = "VeryLazy" },
+	{ "christoomey/vim-tmux-navigator", event = "VeryLazy" },
+	{ "vim-scripts/ReplaceWithRegister", event = "VeryLazy" },
 })
