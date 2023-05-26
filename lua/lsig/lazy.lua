@@ -13,18 +13,20 @@ vim.opt.rtp:prepend(lazypath)
 
 return require("lazy").setup({
 	{ "folke/tokyonight.nvim" },
+	{ "rose-pine/neovim", name = "rose-pine" },
 	{ -- LSP Configuration & Plugins
 		"neovim/nvim-lspconfig",
 		dependencies = {
 			-- Automatically install LSPs to stdpath for neovim
 			{ "williamboman/mason.nvim", config = true },
-			"williamboman/mason-lspconfig.nvim",
-			"onsails/lspkind.nvim",
+			{ "williamboman/mason-lspconfig.nvim" },
+			{ "onsails/lspkind.nvim" },
 
 			-- Additional lua configuration, makes nvim stuff amazing!
-			"folke/neodev.nvim",
+			{ "folke/neodev.nvim" },
 		},
 	},
+	{ "j-hui/fidget.nvim", opts = { text = { spinner = "dots" } }, event = "LspAttach" },
 	{ -- Highlight, edit, and navigate code
 		"nvim-treesitter/nvim-treesitter",
 		dependencies = {
@@ -131,7 +133,6 @@ return require("lazy").setup({
 	-- Tpope and more
 	{ "tpope/vim-sleuth", event = "VeryLazy" },
 	{ "echasnovski/mini.surround", version = false },
-	{ "ThePrimeagen/harpoon", event = "VeryLazy" },
 	{ "numToStr/Comment.nvim", opts = {} },
 	{
 		"folke/todo-comments.nvim",
@@ -139,7 +140,13 @@ return require("lazy").setup({
 		opts = {},
 		event = "VeryLazy",
 	},
-	{ "JellyApple102/easyread.nvim", event = "VeryLazy" },
+	{
+		"folke/trouble.nvim",
+		dependencies = { "nvim-tree/nvim-web-devicons" },
+		opts = {},
+		event = "VeryLazy",
+	},
+
 	{ "christoomey/vim-tmux-navigator", event = "VeryLazy" },
 	{ "vim-scripts/ReplaceWithRegister", event = "VeryLazy" },
 })
