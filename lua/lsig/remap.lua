@@ -4,6 +4,8 @@ local vnoremap = require("lsig.keymap").vnoremap
 local xnoremap = require("lsig.keymap").xnoremap
 
 -- normal mode remaps
+
+-- telescope remaps
 nnoremap("<leader>sf", "<cmd>lua require('telescope.builtin').find_files()<CR>")
 nnoremap("<leader>sg", "<cmd>lua require('telescope.builtin').git_files()<CR>")
 nnoremap("<leader>lg", "<cmd>lua require('telescope.builtin').live_grep()<CR>")
@@ -12,6 +14,7 @@ nnoremap("<leader>fh", "<cmd>lua require('telescope.builtin').help_tags()<CR>")
 
 nnoremap("<leader>cd", "<cmd>:cd %:p:h<CR>")
 
+-- window remaps
 nnoremap("<leader>sv", "<C-w>v")
 nnoremap("<leader>sh", "<C-w>s")
 nnoremap("<leader>se", "<C-w>=")
@@ -19,15 +22,18 @@ nnoremap("<leader>s-", "<cmd>vertical resize -5<CR>")
 nnoremap("<leader>s+", "<cmd>vertical resize +5<CR>")
 nnoremap("<leader>sx", "<cmd>:close<CR>")
 
+-- tab remaps
 nnoremap("<leader>to", "<cmd>:tabnew<CR>")
 nnoremap("<leader>tx", "<cmd>:tabclose<CR>")
 nnoremap("<leader>tn", "<cmd>:tabn<CR>")
 nnoremap("<leader>tp", "<cmd>:tabp<CR>")
 
+-- buffer remaps
 nnoremap("<leader>bn", "<cmd>:bnext<CR>")
 nnoremap("<leader>bp", "<cmd>:bprevious<CR>")
 nnoremap("<leader>bx", "<cmd>:bdelete<CR>")
 
+-- Git remaps
 nnoremap("<leader>gs", "<cmd>:Git<CR>")
 nnoremap("<leader>hp", "<cmd>:Gitsigns preview_hunk<CR>")
 
@@ -42,7 +48,7 @@ nnoremap("<leader>y", '"+y')
 nnoremap("<leader>Y", '"+Y')
 nnoremap("Q", "<nop>")
 
--- lspsaga
+-- lspsaga remaps
 nnoremap("gf", "<cmd>:Lspsaga lsp_finder<CR>", { silent = true }) -- show definition, references
 nnoremap("gD", "<cmd>:Lspsaga goto_definition<CR>", { silent = true }) -- got to declaration
 nnoremap("gd", "<cmd>:Lspsaga peek_definition<CR>", { silent = true }) -- see definition and make edits in window
@@ -59,6 +65,14 @@ nnoremap("]d", "<cmd>:Lspsaga diagnostic_jump_next<CR>", { silent = true }) -- j
 nnoremap("K", "<cmd>:Lspsaga hover_doc<CR>", { silent = true }) -- show documentation for what is under cursor
 nnoremap("<leader>o", "<cmd>:Lspsaga outline<CR>", { silent = true }) -- see outline on right hand side
 nnoremap("<leader>tt", "<cmd>:Lspsaga term_toggle<CR>", { silent = true }) -- Float terminal
+
+-- trouble remaps
+nnoremap("xx", "<cmd>:TroubleToggle<CR>", { silent = true })
+nnoremap("xw", "<cmd>:TroubleToggle workspace_diagnostics<CR>", { silent = true })
+nnoremap("xd", "<cmd>:TroubleToggle document_diagnostics<CR>", { silent = true })
+nnoremap("xl", "<cmd>:TroubleToggle loclist<CR>", { silent = true })
+nnoremap("xq", "<cmd>:TroubleToggle quickfix<CR>", { silent = true })
+nnoremap("gR", "<cmd>:TroubleToggle lsp_references", { silent = true })
 
 -- insert mode remaps
 inoremap("<C-c>", "<ESC>")
