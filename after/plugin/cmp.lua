@@ -61,6 +61,13 @@ cmp.setup({
 		{ name = "luasnip" }, -- For luasnip users.
 		{ name = "buffer" },
 	}),
+	window = {
+		-- completion = cmp.config.window.bordered({
+		-- 	col_offset = -3, -- align the abbr and word on cursor (due to fields order below)
+		-- 	side_padding = 0,
+		-- }),
+		documentation = cmp.config.window.bordered(),
+	},
 	formatting = {
 		format = lspkind.cmp_format({
 			maxwidth = 50,
