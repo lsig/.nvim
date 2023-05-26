@@ -19,9 +19,10 @@ null_ls.setup({
 		null_ls.builtins.formatting.rustfmt,
 		null_ls.builtins.formatting.clang_format,
 		null_ls.builtins.formatting.sql_formatter,
+		null_ls.builtins.formatting.ruff,
 		null_ls.builtins.completion.luasnip,
+		-- null_ls.builtins.diagnostics.ruff,
 		null_ls.builtins.diagnostics.cpplint,
-		null_ls.builtins.diagnostics.pylint,
 		null_ls.builtins.diagnostics.eslint_d.with({ -- js/ts linter
 			condition = function(utils)
 				return utils.root_has_file(".eslintrc.js") -- change file extension if you use something else

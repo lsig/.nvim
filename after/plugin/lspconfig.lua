@@ -8,7 +8,25 @@ capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 
 local servers = {
-	pyright = {},
+	-- pylyzer = {
+	-- 	python = {
+	-- 		checkOnType = true,
+	-- 		diagnostics = false,
+	-- 		inlayHints = true,
+	-- 		smartCompletion = true,
+	-- 	},
+	-- },
+	pyright = {
+		python = {
+			analysis = {
+				autoImportCompletion = true,
+				autoSearchPaths = true,
+				diagnosticMode = "openFilesOnly",
+				useLibraryCodeForTypes = true,
+				typeCheckingMode = "off",
+			},
+		},
+	},
 	html = {},
 	cssls = {},
 	tsserver = {},
@@ -90,7 +108,7 @@ mason_null_ls.setup({
 		"prettierd",
 		"stylua",
 		"eslint_d",
-		"pyproject_flake8",
+		"ruff",
 		"sql_formatter",
 	},
 })
