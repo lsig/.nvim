@@ -13,7 +13,7 @@ vim.opt.rtp:prepend(lazypath)
 
 return require("lazy").setup({
 	{ "folke/tokyonight.nvim" },
-	{ "rose-pine/neovim", name = "rose-pine" },
+	{ "catppuccin/nvim", name = "catppuccin" },
 	{ -- LSP Configuration & Plugins
 		"neovim/nvim-lspconfig",
 		dependencies = {
@@ -53,6 +53,9 @@ return require("lazy").setup({
 					enable = false,
 					separator = "  ",
 					show_file = false,
+				},
+				ui = {
+					kind = require("catppuccin.groups.integrations.lsp_saga").custom_kind(),
 				},
 			})
 		end,
@@ -96,9 +99,6 @@ return require("lazy").setup({
 	},
 	{
 		"windwp/nvim-autopairs",
-		-- config = function()
-		-- 	require("nvim-autopairs").setup({})
-		-- end,
 		opts = {},
 		event = "VeryLazy",
 	},
@@ -132,8 +132,8 @@ return require("lazy").setup({
 	},
 	-- Tpope and more
 	{ "tpope/vim-sleuth", event = "VeryLazy" },
-	{ "echasnovski/mini.surround", version = false },
-	{ "numToStr/Comment.nvim", opts = {} },
+	{ "echasnovski/mini.surround", version = false, event = "VeryLazy" },
+	{ "numToStr/Comment.nvim", opts = {}, event = "VeryLazy" },
 	{
 		"folke/todo-comments.nvim",
 		dependencies = "nvim-lua/plenary.nvim",
@@ -146,7 +146,7 @@ return require("lazy").setup({
 		opts = {},
 		event = "VeryLazy",
 	},
-
+	{ "mbbill/undotree", event = "VeryLazy" },
 	{ "christoomey/vim-tmux-navigator", event = "VeryLazy" },
 	{ "vim-scripts/ReplaceWithRegister", event = "VeryLazy" },
 })

@@ -1,5 +1,19 @@
-vim.g.tokyonight_transparent_sidebar = true
-vim.g.tokyonight_transparent = true
-vim.g.background = "dark"
+-- vim.g.tokyonight_transparent_sidebar = true
+-- vim.g.tokyonight_transparent = true
+-- vim.g.background = "dark"
+--
+-- vim.cmd("colorscheme tokyonight-night")
 
-vim.cmd("colorscheme tokyonight-night")
+require("catppuccin").setup({
+	integrations = {
+		cmp = true,
+		gitsigns = true,
+		telescope = true,
+		fidget = true,
+		lsp_saga = true,
+		mason = true,
+		lsp_trouble = true,
+	},
+})
+
+vim.cmd("colorscheme catppuccin")
