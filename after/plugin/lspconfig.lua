@@ -110,5 +110,9 @@ mason_null_ls.setup({
 		"eslint_d",
 		"ruff",
 		"sql_formatter",
+		"rustfmt",
+		"clangd_format",
+		"mypy",
+		"cpplint",
 	},
 })
