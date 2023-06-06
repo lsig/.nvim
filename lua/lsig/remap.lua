@@ -11,6 +11,7 @@ nnoremap("<leader>sg", "<cmd>lua require('telescope.builtin').git_files()<CR>")
 nnoremap("<leader>lg", "<cmd>lua require('telescope.builtin').live_grep()<CR>")
 nnoremap("<leader>sb", "<cmd>lua require('telescope.builtin').buffers()<CR>")
 nnoremap("<leader>fh", "<cmd>lua require('telescope.builtin').help_tags()<CR>")
+nnoremap(";", "<cmd>lua require('telescope.builtin').resume()<CR>")
 
 nnoremap("<leader>cd", "<cmd>:cd %:p:h<CR>")
 
@@ -36,6 +37,9 @@ nnoremap("<leader>bx", "<cmd>:bdelete<CR>")
 -- Git remaps
 nnoremap("<leader>gs", "<cmd>:Git<CR>")
 nnoremap("<leader>hp", "<cmd>:Gitsigns preview_hunk<CR>")
+nnoremap("<leader>hn", "<cmd>:Gitsigns next_hunk<CR>")
+nnoremap("<leader>hl", "<cmd>:Gitsigns prev_hunk<CR>")
+nnoremap("<leader>hb", "<cmd>:Gitsigns blame_line<CR>")
 
 nnoremap("<leader>pv", "<cmd>:Ex<CR>")
 
@@ -72,15 +76,18 @@ nnoremap("xw", "<cmd>:TroubleToggle workspace_diagnostics<CR>", { silent = true 
 nnoremap("xd", "<cmd>:TroubleToggle document_diagnostics<CR>", { silent = true })
 nnoremap("xl", "<cmd>:TroubleToggle loclist<CR>", { silent = true })
 nnoremap("xq", "<cmd>:TroubleToggle quickfix<CR>", { silent = true })
-nnoremap("gR", "<cmd>:TroubleToggle lsp_references", { silent = true })
+nnoremap("gR", "<cmd>:TroubleToggle lsp_references<CR>", { silent = true })
 
+-- undotree
+nnoremap("<leader>u", "<cmd>:UndotreeToggle<CR>")
 -- insert mode remaps
 inoremap("<C-c>", "<ESC>")
 
 -- visual mode remaps
 vnoremap("J", ":m '>+1<CR>gv=gv")
 vnoremap("K", ":m '<-2<CR>gv=gv")
-vnoremap("<leader>y", '"+y')
+vnoremap("<leader>y", '"+ygv<ESC>')
+vnoremap("y", "ygv<ESC>")
 
 -- x mode remaps
 xnoremap("<leader>p", '"_dP')
