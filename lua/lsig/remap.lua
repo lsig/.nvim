@@ -9,8 +9,10 @@ local xnoremap = require("lsig.keymap").xnoremap
 nnoremap("<leader>sf", "<cmd>lua require('telescope.builtin').find_files()<CR>")
 nnoremap("<leader>sg", "<cmd>lua require('telescope.builtin').git_files()<CR>")
 nnoremap("<leader>lg", "<cmd>lua require('telescope.builtin').live_grep()<CR>")
-nnoremap("<leader>sb", "<cmd>lua require('telescope.builtin').buffers()<CR>")
+nnoremap("<leader><space>", "<cmd>lua require('telescope.builtin').buffers()<CR>")
 nnoremap("<leader>fh", "<cmd>lua require('telescope.builtin').help_tags()<CR>")
+nnoremap("<leader>/", "<cmd>lua require('telescope.builtin').current_buffer_fuzzy_find()<CR>")
+nnoremap("<leader>?", "<cmd>lua require('telescope.builtin').oldfiles()<CR>")
 nnoremap(";", "<cmd>lua require('telescope.builtin').resume()<CR>")
 
 nnoremap("<leader>cd", "<cmd>:cd %:p:h<CR>")
@@ -37,9 +39,9 @@ nnoremap("<leader>bx", "<cmd>:bdelete<CR>")
 -- Git remaps
 nnoremap("<leader>gs", "<cmd>:Git<CR>")
 nnoremap("<leader>hp", "<cmd>:Gitsigns preview_hunk<CR>")
-nnoremap("<leader>hn", "<cmd>:Gitsigns next_hunk<CR>")
-nnoremap("<leader>hl", "<cmd>:Gitsigns prev_hunk<CR>")
-nnoremap("<leader>hb", "<cmd>:Gitsigns blame_line<CR>")
+nnoremap("<leader>gn", "<cmd>:Gitsigns next_hunk<CR>")
+nnoremap("<leader>gp", "<cmd>:Gitsigns prev_hunk<CR>")
+nnoremap("<leader>gb", "<cmd>:Gitsigns blame_line<CR>")
 
 nnoremap("<leader>pv", "<cmd>:Ex<CR>")
 
@@ -66,7 +68,7 @@ nnoremap("<leader>D", "<cmd>:Lspsaga show_line_diagnostics<CR>", { silent = true
 nnoremap("<leader>d", "<cmd>:Lspsaga show_cursor_diagnostics<CR>", { silent = true }) -- show diagnostics for cursor
 nnoremap("[d", "<cmd>:Lspsaga diagnostic_jump_prev<CR>", { silent = true }) -- jump to previous diagnostic in buffer
 nnoremap("]d", "<cmd>:Lspsaga diagnostic_jump_next<CR>", { silent = true }) -- jump to next diagnostic in buffer
-nnoremap("K", "<cmd>:Lspsaga hover_doc<CR>", { silent = true }) -- show documentation for what is under cursor
+nnoremap("K", "<cmd>:Lspsaga hover_doc ++keep<CR>", { silent = true }) -- show documentation for what is under cursor
 nnoremap("<leader>o", "<cmd>:Lspsaga outline<CR>", { silent = true }) -- see outline on right hand side
 nnoremap("<leader>tt", "<cmd>:Lspsaga term_toggle<CR>", { silent = true }) -- Float terminal
 
@@ -80,6 +82,7 @@ nnoremap("gR", "<cmd>:TroubleToggle lsp_references<CR>", { silent = true })
 
 -- undotree
 nnoremap("<leader>u", "<cmd>:UndotreeToggle<CR>")
+
 -- insert mode remaps
 inoremap("<C-c>", "<ESC>")
 

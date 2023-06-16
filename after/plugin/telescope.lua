@@ -29,6 +29,10 @@ require("telescope").setup({
 		resume = {
 			theme = "ivy",
 		},
+		current_buffer_fuzzy_find = {
+			theme = "dropdown",
+			-- winblend = 10,
+		},
 	},
 	extensions = {
 		-- Your extension configuration goes here:
