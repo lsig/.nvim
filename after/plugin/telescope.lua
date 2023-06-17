@@ -1,3 +1,5 @@
+local actions = require("telescope.actions")
+
 require("telescope").setup({
 	defaults = {
 		file_ignore_patterns = {
@@ -15,6 +17,7 @@ require("telescope").setup({
 				-- actions.which_key shows the mappings for your picker,
 				-- e.g. git_{create, delete, ...}_branch for the git_branches picker
 				["<C-h>"] = "which_key",
+				["<esc>"] = actions.close,
 			},
 		},
 	},
@@ -26,12 +29,25 @@ require("telescope").setup({
 		-- }
 		-- Now the picker_config_key will be applied every time you call this
 		-- builtin picker
+		buffers = {
+			theme = "dropdown",
+			winblend = 10,
+			mappings = {
+				i = {
+					["<c-d>"] = actions.delete_buffer + actions.move_to_top,
+				},
+			},
+			sort_mru = true,
+		},
 		resume = {
 			theme = "ivy",
 		},
 		current_buffer_fuzzy_find = {
 			theme = "dropdown",
-			-- winblend = 10,
+			winblend = 10,
+		},
+		git_files = {
+			show_untracked = true,
 		},
 	},
 	extensions = {
@@ -47,7 +63,27 @@ require("telescope").setup({
 			case_mode = "smart_case", -- or "ignore_case" or "respect_case"
 			-- the default case_mode is "smart_case"
 		},
+		file_browser = {
+			theme = "ivy",
+			-- disables netrw and use telescope-file-browser in its place
+			hijack_netrw = true,
+		},
 	},
 })
 
+-- Open Telescope on startup if the first argument is a directory
+local ts_group = vim.api.nvim_create_augroup("TelescopeOnEnter", { clear = true })
+vim.api.nvim_create_autocmd({ "VimEnter" }, {
+	callback = function()
+		local first_arg = vim.v.argv[3]
+		if first_arg and vim.fn.isdirectory(first_arg) == 1 then
+			-- Vim creates a buffer for folder. Close it.
+			vim.cmd(":bd 1")
+			require("telescope.builtin").find_files({ search_dirs = { first_arg } })
+		end
+	end,
+	group = ts_group,
+})
+
 require("telescope").load_extension("fzf")
+require("telescope").load_extension("file_browser")

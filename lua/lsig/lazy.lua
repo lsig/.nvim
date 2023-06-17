@@ -78,6 +78,10 @@ return require("lazy").setup({
 			return vim.fn.executable("make") == 1
 		end,
 	},
+	{
+		"nvim-telescope/telescope-file-browser.nvim",
+		dependencies = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" },
+	},
 	-- Autocomplete
 	{
 		"L3MON4D3/LuaSnip",

@@ -14,6 +14,7 @@ nnoremap("<leader>fh", "<cmd>lua require('telescope.builtin').help_tags()<CR>")
 nnoremap("<leader>/", "<cmd>lua require('telescope.builtin').current_buffer_fuzzy_find()<CR>")
 nnoremap("<leader>?", "<cmd>lua require('telescope.builtin').oldfiles()<CR>")
 nnoremap(";", "<cmd>lua require('telescope.builtin').resume()<CR>")
+nnoremap("<leader>pv", "<cmd>Telescope file_browser<CR>")
 
 nnoremap("<leader>cd", "<cmd>:cd %:p:h<CR>")
 
@@ -42,8 +43,6 @@ nnoremap("<leader>hp", "<cmd>:Gitsigns preview_hunk<CR>")
 nnoremap("<leader>gn", "<cmd>:Gitsigns next_hunk<CR>")
 nnoremap("<leader>gp", "<cmd>:Gitsigns prev_hunk<CR>")
 nnoremap("<leader>gb", "<cmd>:Gitsigns blame_line<CR>")
-
-nnoremap("<leader>pv", "<cmd>:Ex<CR>")
 
 nnoremap("J", "mzJ`z")
 nnoremap("<C-d>", "<C-d>zz")

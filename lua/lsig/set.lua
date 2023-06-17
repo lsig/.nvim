@@ -18,5 +18,9 @@ vim.opt.splitbelow = true
 
 vim.g.mapleader = " "
 
--- vim.g.loaded_netrw = 1
--- vim.g.loaded_netrwPlugin = 1
+-- vim.g.netrw_winsize = 20
+-- vim.g.netrw_banner = 0 -- Disables the Netrw banner. Press 'I' to toggle.
+-- vim.g.netrw_liststyle = 3 -- Sets the view to treeview.
+
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
