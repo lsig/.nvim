@@ -23,7 +23,7 @@ return require("lazy").setup({
 			{ "onsails/lspkind.nvim" },
 
 			-- Additional lua configuration, makes nvim stuff amazing!
-			{ "folke/neodev.nvim" },
+			{ "folke/neodev.nvim", opts = {} },
 		},
 	},
 	{ "j-hui/fidget.nvim", opts = { text = { spinner = "dots" } }, event = "LspAttach" },
@@ -89,6 +89,7 @@ return require("lazy").setup({
 		version = "v1.2.*",
 		-- install jsregexp (optional!).
 		build = "make install_jsregexp",
+		dependencies = { "rafamadriz/friendly-snippets" },
 	},
 	{ "rafamadriz/friendly-snippets", event = "VeryLazy" },
 	{
@@ -136,7 +137,7 @@ return require("lazy").setup({
 	},
 	-- Tpope and more
 	{ "tpope/vim-sleuth", event = "VeryLazy" },
-	{ "echasnovski/mini.surround", version = false, event = "VeryLazy" },
+	{ "echasnovski/mini.surround", version = false, opts = {}, event = "VeryLazy" },
 	{ "numToStr/Comment.nvim", opts = {}, event = "VeryLazy" },
 	{
 		"folke/todo-comments.nvim",
