@@ -9,53 +9,92 @@ require("telescope").setup({
 			"yarn.lock",
 			"profile_list_images",
 		},
-		-- Default configuration for telescope goes here:
-		-- config_key = value,
+		sorting_strategy = "ascending",
+		multi_icon = "",
+		layout_strategy = "flex",
+		winblend = 0,
+		layout_config = {
+			horizontal = {
+				prompt_position = "top",
+				preview_width = 0.5,
+			},
+			vertical = {
+				mirror = true,
+			},
+			center = {
+				mirror = true,
+			},
+		},
+		hl_result_eol = false,
+		preview = {
+			msg_bg_fillchar = " ",
+		},
+		history = {
+			cycle_wrap = true,
+		},
+		cache = false,
+		dynamic_preview_title = true,
 		mappings = {
 			i = {
-				-- map actions.which_key to <C-h> (default: <C-/>)
-				-- actions.which_key shows the mappings for your picker,
-				-- e.g. git_{create, delete, ...}_branch for the git_branches picker
-				["<C-h>"] = "which_key",
-				["<esc>"] = actions.close,
+				["<C-w>"] = "which_key",
+				["<C-n>"] = actions.toggle_selection + actions.move_selection_worse,
+				["<C-p>"] = actions.toggle_selection + actions.move_selection_better,
+				["<Tab>"] = actions.move_selection_next,
+				["<S-Tab>"] = actions.move_selection_previous,
 			},
 		},
 	},
 	pickers = {
-		-- Default configuration for builtin pickers goes here:
-		-- picker_name = {
-		--   picker_config_key = value,
-		--   ...
-		-- }
-		-- Now the picker_config_key will be applied every time you call this
-		-- builtin picker
+		find_files = {
+			-- theme = "dropdown",
+			theme = "dropdown",
+			previewer = false,
+			mappings = {
+				i = {
+					["<esc>"] = actions.close,
+				},
+			},
+		},
 		buffers = {
 			theme = "dropdown",
-			winblend = 10,
+			previewer = false,
 			mappings = {
 				i = {
 					["<c-d>"] = actions.delete_buffer + actions.move_to_top,
+					["<esc>"] = actions.close,
 				},
 			},
 			sort_mru = true,
 		},
 		resume = {
-			theme = "ivy",
+			theme = "dropdown",
+			previewer = false,
 		},
 		current_buffer_fuzzy_find = {
 			theme = "dropdown",
-			winblend = 10,
+			previewer = false,
+			mappings = {
+				i = {
+					["<esc>"] = actions.close,
+					["<CR>"] = function(prompt_bufnr)
+						actions.select_default(prompt_bufnr)
+						vim.cmd("normal! zz")
+					end,
+				},
+			},
 		},
 		git_files = {
+			theme = "dropdown",
+			previewer = false,
 			show_untracked = true,
+			mappings = {
+				i = {
+					["<esc>"] = actions.close,
+				},
+			},
 		},
 	},
 	extensions = {
-		-- Your extension configuration goes here:
-		-- extension_name = {
-		--   extension_config_key = value,
-		-- }
-		-- please take a look at the readme of the extension you want to configure
 		fzf = {
 			fuzzy = true, -- false will only do exact matching
 			override_generic_sorter = true, -- override the generic sorter
@@ -64,9 +103,16 @@ require("telescope").setup({
 			-- the default case_mode is "smart_case"
 		},
 		file_browser = {
-			theme = "ivy",
+			-- theme = "ivy",
+			theme = "dropdown",
+			previewer = false,
 			-- disables netrw and use telescope-file-browser in its place
 			hijack_netrw = true,
+			mappings = {
+				i = {
+					["<C-c>"] = actions.close,
+				},
+			},
 		},
 	},
 })
