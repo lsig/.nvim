@@ -46,7 +46,6 @@ require("telescope").setup({
 	},
 	pickers = {
 		find_files = {
-			-- theme = "dropdown",
 			theme = "dropdown",
 			previewer = false,
 			mappings = {
@@ -103,7 +102,6 @@ require("telescope").setup({
 			-- the default case_mode is "smart_case"
 		},
 		file_browser = {
-			-- theme = "ivy",
 			theme = "dropdown",
 			previewer = false,
 			-- disables netrw and use telescope-file-browser in its place
