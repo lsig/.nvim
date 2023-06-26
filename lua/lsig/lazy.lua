@@ -26,7 +26,7 @@ return require("lazy").setup({
 			{ "folke/neodev.nvim", opts = {} },
 		},
 	},
-	{ "j-hui/fidget.nvim", opts = { text = { spinner = "dots" } }, event = "LspAttach" },
+	{ "j-hui/fidget.nvim", tag = "legacy", opts = { text = { spinner = "dots" } }, event = "LspAttach" },
 	{ -- Highlight, edit, and navigate code
 		"nvim-treesitter/nvim-treesitter",
 		dependencies = {
@@ -135,9 +135,9 @@ return require("lazy").setup({
 			},
 		},
 	},
-	-- Tpope and more
+	-- Tpope, Folke and more
 	{ "tpope/vim-sleuth", event = "VeryLazy" },
-	{ "echasnovski/mini.surround", version = false, opts = {}, event = "VeryLazy" },
+	{ "echasnovski/mini.surround", version = "*", opts = {}, event = "VeryLazy" },
 	{ "numToStr/Comment.nvim", opts = {}, event = "VeryLazy" },
 	{
 		"folke/todo-comments.nvim",
@@ -150,6 +150,38 @@ return require("lazy").setup({
 		dependencies = { "nvim-tree/nvim-web-devicons" },
 		opts = {},
 		event = "VeryLazy",
+	},
+	{
+		"folke/flash.nvim",
+		event = "VeryLazy",
+		opts = {},
+		keys = {
+			{
+				"s",
+				mode = { "n", "x", "o" },
+				function()
+					-- default options: exact mode, multi window, all directions, with a backdrop
+					require("flash").jump()
+				end,
+				desc = "Flash",
+			},
+			{
+				"S",
+				mode = { "n", "o", "x" },
+				function()
+					require("flash").treesitter()
+				end,
+				desc = "Flash Treesitter",
+			},
+			{
+				"r",
+				mode = "o",
+				function()
+					require("flash").remote()
+				end,
+				desc = "Remote Flash",
+			},
+		},
 	},
 	{ "mbbill/undotree", event = "VeryLazy" },
 	{ "christoomey/vim-tmux-navigator", event = "VeryLazy" },
