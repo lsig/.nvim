@@ -7,6 +7,7 @@ vim.opt.tabstop = 4
 vim.opt.softtabstop = 4
 vim.opt.shiftwidth = 4
 vim.opt.expandtab = true
+
 vim.opt.hlsearch = false
 vim.opt.incsearch = true
 
@@ -16,11 +17,9 @@ vim.opt.wrap = false
 vim.opt.splitright = true
 vim.opt.splitbelow = true
 
-vim.g.mapleader = " "
+vim.opt.scrolloff = 8
 
--- vim.g.netrw_winsize = 20
--- vim.g.netrw_banner = 0 -- Disables the Netrw banner. Press 'I' to toggle.
--- vim.g.netrw_liststyle = 3 -- Sets the view to treeview.
+vim.g.mapleader = " "
 
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1

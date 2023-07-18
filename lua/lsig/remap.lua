@@ -1,98 +1,89 @@
-local nnoremap = require("lsig.keymap").nnoremap
-local inoremap = require("lsig.keymap").inoremap
-local vnoremap = require("lsig.keymap").vnoremap
-local xnoremap = require("lsig.keymap").xnoremap
-
 -- normal mode remaps
 
 -- telescope remaps
-nnoremap("<leader>sf", "<cmd>lua require('telescope.builtin').find_files()<CR>")
-nnoremap("<leader>sg", "<cmd>lua require('telescope.builtin').git_files()<CR>")
-nnoremap("<leader>lg", "<cmd>lua require('telescope.builtin').live_grep()<CR>")
-nnoremap("<leader><space>", "<cmd>lua require('telescope.builtin').buffers()<CR>")
-nnoremap("<leader>fh", "<cmd>lua require('telescope.builtin').help_tags()<CR>")
-nnoremap("<leader>/", "<cmd>lua require('telescope.builtin').current_buffer_fuzzy_find()<CR>")
-nnoremap("<leader>?", "<cmd>lua require('telescope.builtin').oldfiles()<CR>")
-nnoremap("<leader>pv", "<cmd>Telescope file_browser<CR>")
+vim.keymap.set("n", "<leader>gf", require("telescope.builtin").git_files, { desc = "Search [G]it [F]iles" })
+vim.keymap.set("n", "<leader>sf", require("telescope.builtin").find_files, { desc = "[S]earch [F]iles" })
+vim.keymap.set("n", "<leader>sh", require("telescope.builtin").help_tags, { desc = "[S]earch [H]elp" })
+vim.keymap.set("n", "<leader>sw", require("telescope.builtin").grep_string, { desc = "[S]earch current [W]ord" })
+vim.keymap.set("n", "<leader>sg", require("telescope.builtin").live_grep, { desc = "[S]earch by [G]rep" })
+vim.keymap.set("n", "<leader>sd", require("telescope.builtin").diagnostics, { desc = "[S]earch [D]iagnostics" })
 
-nnoremap("<leader>cd", "<cmd>:cd %:p:h<CR>")
+vim.keymap.set("n", "<leader>?", require("telescope.builtin").oldfiles, { desc = "[?] Find recently opened files" })
+vim.keymap.set("n", "<leader><space>", require("telescope.builtin").buffers, { desc = "[ ] Find existing buffers" })
+vim.keymap.set("n", "<leader>/", function()
+	-- You can pass additional configuration to telescope to change theme, layout, etc.
+	require("telescope.builtin").current_buffer_fuzzy_find(require("telescope.themes").get_dropdown())
+end, { desc = "[/] Fuzzily search in current buffer" })
+
+vim.keymap.set("n", "<leader>pv", ":Telescope file_browser<CR>", { silent = true })
 
 -- window remaps
-nnoremap("<leader>sv", "<C-w>v")
-nnoremap("<leader>sh", "<C-w>s")
-nnoremap("<leader>se", "<C-w>=")
-nnoremap("<leader>s-", "<cmd>vertical resize -5<CR>")
-nnoremap("<leader>s+", "<cmd>vertical resize +5<CR>")
-nnoremap("<leader>sx", "<cmd>:close<CR>")
+vim.keymap.set("n", "<leader>cd", ":cd %:p:h", { silent = true })
+vim.keymap.set("n", "<leader>sv", "<C-w>v")
+vim.keymap.set("n", "<leader>sl", "<C-w>s")
+vim.keymap.set("n", "<leader>se", "<C-w>=")
+vim.keymap.set("n", "<leader>s-", ":vertical resize -5<CR>", { silent = true })
+vim.keymap.set("n", "<leader>s+", ":vertical resize +5<CR>", { silent = true })
+vim.keymap.set("n", "<leader>sx", ":close<CR>", { silent = true })
 
 -- tab remaps
-nnoremap("<leader>to", "<cmd>:tabnew<CR>")
-nnoremap("<leader>tx", "<cmd>:tabclose<CR>")
-nnoremap("<leader>tn", "<cmd>:tabn<CR>")
-nnoremap("<leader>tp", "<cmd>:tabp<CR>")
+vim.keymap.set("n", "<leader>to", ":tabnew<CR>", { silent = true })
+vim.keymap.set("n", "<leader>tx", ":tabclose<CR>", { silent = true })
+vim.keymap.set("n", "<leader>tn", ":tabn<CR>", { silent = true })
+vim.keymap.set("n", "<leader>tp", ":tabp<CR>", { silent = true })
 
 -- buffer remaps
-nnoremap("<leader>bn", "<cmd>:bnext<CR>")
-nnoremap("<leader>bp", "<cmd>:bprevious<CR>")
-nnoremap("<leader>bx", "<cmd>:bdelete<CR>")
+vim.keymap.set("n", "<leader>bn", ":bnext<CR>", { silent = true })
+vim.keymap.set("n", "<leader>bp", ":bprevious<CR>", { silent = true })
+vim.keymap.set("n", "<leader>bx", ":bdelete<CR>", { silent = true })
 
 -- Git remaps
-nnoremap("<leader>gs", "<cmd>:Git<CR>")
-nnoremap("<leader>hp", "<cmd>:Gitsigns preview_hunk<CR>")
-nnoremap("<leader>gn", "<cmd>:Gitsigns next_hunk<CR>")
-nnoremap("<leader>gp", "<cmd>:Gitsigns prev_hunk<CR>")
-nnoremap("<leader>gb", "<cmd>:Gitsigns blame_line<CR>")
+vim.keymap.set("n", "<leader>gs", ":Git<CR>", { silent = true })
+vim.keymap.set("n", "<leader>gp", require("gitsigns").prev_hunk, { desc = "[G]o to [P]revious Hunk" })
+vim.keymap.set("n", "<leader>gn", require("gitsigns").next_hunk, { desc = "[G]o to [N]ext Hunk" })
+vim.keymap.set("n", "<leader>ph", require("gitsigns").preview_hunk, { desc = "[P]review [H]unk" })
+vim.keymap.set("n", "<leader>gb", require("gitsigns").blame_line, { desc = "[G]it [B]lame" })
 
-nnoremap("J", "mzJ`z")
-nnoremap("<C-d>", "<C-d>zz")
-nnoremap("<C-u>", "<C-u>zz")
-nnoremap("n", "nzzzv")
-nnoremap("N", "Nzzzv")
-nnoremap("<BS>", "ciw")
-nnoremap("<leader>y", '"+y')
-nnoremap("<leader>Y", '"+Y')
-nnoremap("Q", "<nop>")
+-- remaps
+vim.keymap.set("n", "J", "mzJ`z")
+vim.keymap.set("n", "<C-d>", "<C-d>zz")
+vim.keymap.set("n", "<C-u>", "<C-u>zz")
+vim.keymap.set("n", "n", "nzzzv")
+vim.keymap.set("n", "N", "Nzzzv")
+vim.keymap.set("n", "<BS>", "ciw")
+vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]])
+vim.keymap.set("n", "<leader>Y", [["+Y]])
+vim.keymap.set({ "n", "v" }, "<leader>d", [["_d]])
+vim.keymap.set("n", "Q", "<nop>")
 
--- lspsaga remaps
-nnoremap("gf", "<cmd>:Lspsaga lsp_finder<CR>", { silent = true }) -- show definition, references
-nnoremap("gD", "<cmd>:Lspsaga goto_definition<CR>", { silent = true }) -- got to declaration
-nnoremap("gd", "<cmd>:Lspsaga peek_definition<CR>", { silent = true }) -- see definition and make edits in window
-nnoremap("<leader>gr", "<cmd>Telescope lsp_references<CR>", { silent = true }) -- go to implementation
-nnoremap("<leader>td", "<cmd>:Lspsaga peek_type_definition<CR>", { silent = true })
-nnoremap("<leader>tD", "<cmd>:Lspsaga goto_type_definition<CR>", { silent = true })
-nnoremap("<leader>ds", "<cmd>Telescope lsp_document_symbols<CR>", { silent = true })
-nnoremap("<leader>ca", "<cmd>:Lspsaga code_action<CR>", { silent = true }) -- see available code actions
-nnoremap("<leader>rn", "<cmd>:Lspsaga rename<CR>", { silent = true }) -- smart rename
-nnoremap("<leader>D", "<cmd>:Lspsaga show_line_diagnostics<CR>", { silent = true }) -- show  diagnostics for line
-nnoremap("<leader>d", "<cmd>:Lspsaga show_cursor_diagnostics<CR>", { silent = true }) -- show diagnostics for cursor
-nnoremap("[d", "<cmd>:Lspsaga diagnostic_jump_prev<CR>", { silent = true }) -- jump to previous diagnostic in buffer
-nnoremap("]d", "<cmd>:Lspsaga diagnostic_jump_next<CR>", { silent = true }) -- jump to next diagnostic in buffer
-nnoremap("K", "<cmd>:Lspsaga hover_doc ++keep<CR>", { silent = true }) -- show documentation for what is under cursor
-nnoremap("<leader>o", "<cmd>:Lspsaga outline<CR>", { silent = true }) -- see outline on right hand side
-nnoremap("<leader>tt", "<cmd>:Lspsaga term_toggle<CR>", { silent = true }) -- Float terminal
+-- Diagnostic keymaps
+vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, { desc = "Go to previous diagnostic message" })
+vim.keymap.set("n", "]d", vim.diagnostic.goto_next, { desc = "Go to next diagnostic message" })
+vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float, { desc = "Open floating diagnostic message" })
+vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagnostics list" })
 
 -- trouble remaps
-nnoremap("xx", "<cmd>:TroubleToggle<CR>", { silent = true })
-nnoremap("xw", "<cmd>:TroubleToggle workspace_diagnostics<CR>", { silent = true })
-nnoremap("xd", "<cmd>:TroubleToggle document_diagnostics<CR>", { silent = true })
-nnoremap("xl", "<cmd>:TroubleToggle loclist<CR>", { silent = true })
-nnoremap("xq", "<cmd>:TroubleToggle quickfix<CR>", { silent = true })
-nnoremap("gR", "<cmd>:TroubleToggle lsp_references<CR>", { silent = true })
+vim.keymap.set("n", "xx", ":TroubleToggle<CR>", { silent = true })
+vim.keymap.set("n", "xw", ":TroubleToggle workspace_diagnostics<CR>", { silent = true })
+vim.keymap.set("n", "xd", ":TroubleToggle document_diagnostics<CR>", { silent = true })
+vim.keymap.set("n", "xl", ":TroubleToggle loclist<CR>", { silent = true })
+vim.keymap.set("n", "xq", ":TroubleToggle quickfix<CR>", { silent = true })
+vim.keymap.set("n", "gR", ":TroubleToggle lsp_references<CR>", { silent = true })
 
 -- undotree
-nnoremap("<leader>u", "<cmd>:UndotreeToggle<CR>")
+vim.keymap.set("n", "<leader>u", ":UndotreeToggle<CR>", { silent = true })
 
 -- insert mode remaps
-inoremap("<C-c>", "<ESC>")
+vim.keymap.set("i", "<C-c>", "<ESC>")
 
 -- visual mode remaps
-vnoremap("J", ":m '>+1<CR>gv=gv")
-vnoremap("K", ":m '<-2<CR>gv=gv")
-vnoremap("<leader>y", '"+ygv<ESC>')
-vnoremap("y", "ygv<ESC>")
+vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
+vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
+vim.keymap.set("v", "<", "<gv")
+vim.keymap.set("v", ">", ">gv")
 
 -- x mode remaps
-xnoremap("<leader>p", '"_dP')
+vim.keymap.set("x", "<leader>p", [["_dP]])
 
 -- highlight on yank
 local highlight_group = vim.api.nvim_create_augroup("YankHighlight", { clear = true })
