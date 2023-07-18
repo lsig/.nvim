@@ -26,44 +26,12 @@ return require("lazy").setup({
 			{ "folke/neodev.nvim", opts = {} },
 		},
 	},
-	{ "j-hui/fidget.nvim", tag = "legacy", opts = { text = { spinner = "dots" } }, event = "LspAttach" },
 	{ -- Highlight, edit, and navigate code
 		"nvim-treesitter/nvim-treesitter",
 		dependencies = {
 			"nvim-treesitter/nvim-treesitter-textobjects",
 		},
 		build = ":TSUpdate",
-	},
-	{
-		"glepnir/lspsaga.nvim",
-		event = "LspAttach",
-		config = function()
-			require("lspsaga").setup({
-				preview = {
-					lines_above = 0,
-					lines_below = 10,
-				},
-				scroll_preview = {
-					scroll_down = "<C-f>",
-					scroll_up = "<C-b>",
-				},
-				request_timeout = 2000,
-
-				symbol_in_winbar = {
-					enable = false,
-					separator = "  ",
-					show_file = false,
-				},
-				ui = {
-					kind = require("catppuccin.groups.integrations.lsp_saga").custom_kind(),
-				},
-			})
-		end,
-		dependencies = {
-			{ "nvim-tree/nvim-web-devicons" },
-			--Please make sure you install markdown and markdown_inline parser
-			{ "nvim-treesitter/nvim-treesitter" },
-		},
 	},
 	-- Telescope
 	{
@@ -80,6 +48,10 @@ return require("lazy").setup({
 	},
 	{
 		"nvim-telescope/telescope-file-browser.nvim",
+		dependencies = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" },
+	},
+	{
+		"nvim-telescope/telescope-ui-select.nvim",
 		dependencies = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" },
 	},
 	-- Autocomplete
@@ -137,51 +109,14 @@ return require("lazy").setup({
 	},
 	-- Tpope, Folke and more
 	{ "tpope/vim-sleuth", event = "VeryLazy" },
-	{ "echasnovski/mini.surround", version = "*", opts = {}, event = "VeryLazy" },
+	{ "tpope/vim-surround", event = "VeryLazy" },
+	{ "tpope/vim-repeat", event = "VeryLazy" },
 	{ "numToStr/Comment.nvim", opts = {}, event = "VeryLazy" },
 	{
 		"folke/todo-comments.nvim",
 		dependencies = "nvim-lua/plenary.nvim",
 		opts = {},
 		event = "VeryLazy",
-	},
-	{
-		"folke/trouble.nvim",
-		dependencies = { "nvim-tree/nvim-web-devicons" },
-		opts = {},
-		event = "VeryLazy",
-	},
-	{
-		"folke/flash.nvim",
-		event = "VeryLazy",
-		opts = {},
-		keys = {
-			{
-				"s",
-				mode = { "n", "x", "o" },
-				function()
-					-- default options: exact mode, multi window, all directions, with a backdrop
-					require("flash").jump()
-				end,
-				desc = "Flash",
-			},
-			{
-				"S",
-				mode = { "n", "o", "x" },
-				function()
-					require("flash").treesitter()
-				end,
-				desc = "Flash Treesitter",
-			},
-			{
-				"r",
-				mode = "o",
-				function()
-					require("flash").remote()
-				end,
-				desc = "Remote Flash",
-			},
-		},
 	},
 	{ "mbbill/undotree", event = "VeryLazy" },
 	{ "christoomey/vim-tmux-navigator", event = "VeryLazy" },
