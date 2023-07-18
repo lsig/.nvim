@@ -112,6 +112,9 @@ require("telescope").setup({
 				},
 			},
 		},
+		["ui-select"] = {
+			require("telescope.themes").get_cursor({}),
+		},
 	},
 })
 
@@ -131,3 +134,4 @@ vim.api.nvim_create_autocmd({ "VimEnter" }, {
 
 require("telescope").load_extension("fzf")
 require("telescope").load_extension("file_browser")
+require("telescope").load_extension("ui-select")
