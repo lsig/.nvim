@@ -26,6 +26,11 @@ return require("lazy").setup({
 			{ "folke/neodev.nvim", opts = {} },
 		},
 	},
+	{
+		"creativenull/efmls-configs-nvim",
+		version = "v1.x.x",
+		dependencies = { "neovim/nvim-lspconfig" },
+	},
 	{ -- Highlight, edit, and navigate code
 		"nvim-treesitter/nvim-treesitter",
 		dependencies = {
@@ -33,6 +38,7 @@ return require("lazy").setup({
 		},
 		build = ":TSUpdate",
 	},
+	{ "nvim-treesitter/nvim-treesitter-context", opts = {} },
 	-- Telescope
 	{
 		"nvim-telescope/telescope.nvim",
@@ -81,11 +87,11 @@ return require("lazy").setup({
 	},
 	{ "windwp/nvim-ts-autotag", event = "VeryLazy" },
 	--null ls
-	{
-		"jose-elias-alvarez/null-ls.nvim",
-		event = "BufReadPre",
-		dependencies = { "jayp0521/mason-null-ls.nvim" },
-	},
+	-- {
+	-- 	"jose-elias-alvarez/null-ls.nvim",
+	-- 	event = "BufReadPre",
+	-- 	dependencies = { "jayp0521/mason-null-ls.nvim" },
+	-- },
 	-- lualine
 	{
 		"nvim-lualine/lualine.nvim",

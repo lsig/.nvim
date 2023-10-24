@@ -6,6 +6,21 @@ capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
 
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 
+local lsp_group = vim.api.nvim_create_augroup("LspFormattingGroup", {})
+
+vim.api.nvim_create_autocmd("BufWritePost", {
+	group = lsp_group,
+	callback = function()
+		local efm = vim.lsp.get_active_clients({ name = "efm" })
+
+		if vim.tbl_isempty(efm) then
+			return
+		end
+
+			vim.lsp.buf.format({ name = "efm" })
+	end,
+})
+
 local on_attach = function(_, bufnr)
 	local nmap = function(keys, func, desc)
 		if desc then
@@ -36,12 +51,30 @@ local on_attach = function(_, bufnr)
 	nmap("<leader>wl", function()
 		print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
 	end, "[W]orkspace [L]ist Folders")
-
-	-- Create a command `:Format` local to the LSP buffer
-	vim.api.nvim_buf_create_user_command(bufnr, "Format", function(_)
-		vim.lsp.buf.format()
-	end, { desc = "Format current buffer with LSP" })
 end
+
+-- Maintained with Mason
+local prettier = require("efmls-configs.formatters.prettier")
+local eslint_d = require("efmls-configs.linters.eslint_d")
+local clang_format = require("efmls-configs.formatters.clang_format")
+local black = require("efmls-configs.formatters.black")
+local stylua = require("efmls-configs.formatters.stylua")
+local golangci_lint = require("efmls-configs.linters.golangci_lint")
+local gofmt = require("efmls-configs.formatters.gofmt")
+
+local languages = {
+	typescript = { eslint_d, prettier },
+	typescriptreact = { eslint_d, prettier },
+	javascript = { eslint_d, prettier },
+	javascriptreact = { eslint_d, prettier },
+	json = { prettier },
+	html = { prettier },
+	cpp = { clang_format },
+	c = { clang_format },
+	python = { black },
+	lua = { stylua },
+	go = { golangci_lint, gofmt },
+}
 
 local servers = {
 	pyright = {
@@ -137,17 +170,16 @@ mason_lspconfig.setup_handlers({
 	end,
 })
 
-local mason_null_ls = require("mason-null-ls")
-
-mason_null_ls.setup({
-	ensure_installed = {
-		"prettierd",
-		"stylua",
-		"eslint_d",
-		"ruff",
-		"sql_formatter",
-		"clangd_format",
-		"mypy",
-		"cpplint",
+require("lspconfig").efm.setup({
+	init_options = {
+		documentFormatting = true,
+		documentRangeFormatting = true,
 	},
+	filetypes = vim.tbl_keys(languages),
+	settings = {
+		rootMarkers = { ".git/", "package.json" },
+		languages = languages,
+	},
+	capabilities = capabilities,
+	on_attach = on_attach,
 })
