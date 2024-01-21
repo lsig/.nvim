@@ -15,7 +15,7 @@ vim.keymap.set("n", "<leader>/", function()
 	require("telescope.builtin").current_buffer_fuzzy_find(require("telescope.themes").get_dropdown())
 end, { desc = "[/] Fuzzily search in current buffer" })
 
-vim.keymap.set("n", "<leader>pv", ":Telescope file_browser<CR>", { silent = true })
+vim.keymap.set("n", "<leader>pv", ":Oil<CR>", { silent = true })
 
 -- window remaps
 vim.keymap.set("n", "<leader>cd", ":cd %:p:h", { silent = true })
