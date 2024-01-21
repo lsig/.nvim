@@ -17,7 +17,7 @@ vim.api.nvim_create_autocmd("BufWritePost", {
 			return
 		end
 
-			vim.lsp.buf.format({ name = "efm" })
+		vim.lsp.buf.format({ name = "efm" })
 	end,
 })
 
@@ -93,7 +93,23 @@ local servers = {
 	tsserver = {},
 	clangd = {},
 	sqlls = {},
-	tailwindcss = {},
+	-- tailwindcss = {
+	-- 	filetypes = {
+	-- 		"templ",
+	-- 		"html",
+	-- 		"typescriptreact",
+	-- 		"javascriptreact",
+	-- 		"css",
+	-- 		"sass",
+	-- 		"scss",
+	-- 		"less",
+	-- 	},
+	-- 	init_options = {
+	-- 		userLanguages = {
+	-- 			templ = "html",
+	-- 		},
+	-- 	},
+	-- },
 	gopls = {
 		completeUnimported = true,
 		usePlaceholders = true,
@@ -101,6 +117,7 @@ local servers = {
 			unusedparams = true,
 		},
 	},
+	templ = {},
 	rust_analyzer = {
 		checkOnSave = {
 			command = "clippy",
@@ -168,6 +185,31 @@ mason_lspconfig.setup_handlers({
 			settings = servers[server_name],
 		})
 	end,
+})
+
+-- additional filetypes
+vim.filetype.add({
+	extension = {
+		templ = "templ",
+	},
+})
+
+require("lspconfig").tailwindcss.setup({
+	filetypes = {
+		"templ",
+		"html",
+		"typescriptreact",
+		"javascriptreact",
+		"css",
+		"sass",
+		"scss",
+		"less",
+	},
+	init_options = {
+		userLanguages = {
+			templ = "html",
+		},
+	},
 })
 
 require("lspconfig").efm.setup({

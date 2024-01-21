@@ -11,6 +11,8 @@ require("nvim-treesitter.configs").setup({
 		"html",
 		"markdown",
 		"markdown_inline",
+		"templ",
+		"go",
 	},
 	auto_install = true,
 	sync_install = false,
