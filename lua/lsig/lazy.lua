@@ -95,7 +95,22 @@ return require("lazy").setup({
 		dependencies = { "nvim-tree/nvim-web-devicons" },
 	},
 	-- git integration
-	{ "tpope/vim-fugitive", event = "VeryLazy" },
+	{
+		"NeogitOrg/neogit",
+		dependencies = {
+			"nvim-lua/plenary.nvim", -- required
+			"sindrets/diffview.nvim", -- Diff integration
+
+			"nvim-telescope/telescope.nvim",
+		},
+		cmd = "Neogit",
+		keys = {
+			{ "<Leader>gs", "<cmd>Neogit kind=vsplit<CR>", desc = "Neogit" },
+		},
+		config = true,
+		event = "BufEnter"
+	},
+
 	{ -- Adds git releated signs to the gutter, as well as utilities for managing changes
 		"lewis6991/gitsigns.nvim",
 		event = "BufEnter",

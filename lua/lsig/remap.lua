@@ -38,11 +38,12 @@ vim.keymap.set("n", "<leader>bp", ":bprevious<CR>", { silent = true })
 vim.keymap.set("n", "<leader>bx", ":bdelete<CR>", { silent = true })
 
 -- Git remaps
-vim.keymap.set("n", "<leader>gs", ":Git<CR>", { silent = true })
 vim.keymap.set("n", "<leader>gp", require("gitsigns").prev_hunk, { desc = "[G]o to [P]revious Hunk" })
 vim.keymap.set("n", "<leader>gn", require("gitsigns").next_hunk, { desc = "[G]o to [N]ext Hunk" })
 vim.keymap.set("n", "<leader>ph", require("gitsigns").preview_hunk, { desc = "[P]review [H]unk" })
 vim.keymap.set("n", "<leader>gb", require("gitsigns").blame_line, { desc = "[G]it [B]lame" })
+vim.keymap.set("n", "<leader>do", ":DiffviewOpen<CR>", { desc = "[D]iff [O]pen" })
+vim.keymap.set("n", "<leader>dl", ":DiffviewClose<CR>", { desc = "[D]iff [L]eave" })
 
 -- remaps
 vim.keymap.set("n", "J", "mzJ`z")
