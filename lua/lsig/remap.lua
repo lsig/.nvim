@@ -6,6 +6,7 @@ vim.keymap.set("n", "<leader>sh", require("telescope.builtin").help_tags, { desc
 vim.keymap.set("n", "<leader>sw", require("telescope.builtin").grep_string, { desc = "[S]earch current [W]ord" })
 vim.keymap.set("n", "<leader>lg", require("telescope.builtin").live_grep, { desc = "[S]earch by [G]rep" })
 vim.keymap.set("n", "<leader>sd", require("telescope.builtin").diagnostics, { desc = "[S]earch [D]iagnostics" })
+vim.keymap.set("n", "<leader>sb", require("telescope.builtin").git_branches, { desc = "[S]earch [B]ranches" })
 
 vim.keymap.set("n", "<leader>?", require("telescope.builtin").oldfiles, { desc = "[?] Find recently opened files" })
 vim.keymap.set("n", "<leader><space>", require("telescope.builtin").buffers, { desc = "[ ] Find existing buffers" })
@@ -42,10 +43,10 @@ vim.keymap.set("n", "[c", require("gitsigns").next_hunk, { desc = "[G]o to [N]ex
 vim.keymap.set("n", "<leader>hp", require("gitsigns").preview_hunk, { desc = "[P]review [H]unk" })
 vim.keymap.set("n", "<leader>hs", require("gitsigns").stage_hunk, { desc = "[H]unk [S]tage" })
 vim.keymap.set("n", "<leader>hr", require("gitsigns").reset_hunk, { desc = "[H]unk [R]eset" })
-vim.keymap.set("n", "<leader>gb", require("gitsigns").blame_line, { desc = "[G]it [B]lame" })
-vim.keymap.set("n", "<leader>gc", ":Neogit commit<CR>", { silent = true })
-vim.keymap.set("n", "<leader>p", ":Neogit pull<CR>", { silent = true })
-vim.keymap.set("n", "<leader>P", ":Neogit push<CR>", { silent = true })
+vim.keymap.set("n", "<leader>B", require("gitsigns").toggle_current_line_blame, { desc = "[G]it [B]lame" })
+vim.keymap.set("n", "<leader>gc", ":Neogit commit<CR>")
+vim.keymap.set("n", "<leader>p", ":Neogit pull<CR>")
+vim.keymap.set("n", "<leader>P", ":Neogit push<CR>")
 vim.keymap.set("n", "<leader>do", ":DiffviewOpen<CR>", { desc = "[D]iff [O]pen" })
 vim.keymap.set("n", "<leader>dl", ":DiffviewClose<CR>", { desc = "[D]iff [L]eave" })
 
