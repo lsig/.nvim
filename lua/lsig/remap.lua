@@ -1,5 +1,4 @@
 -- normal mode remaps
-
 -- telescope remaps
 vim.keymap.set("n", "<leader>sg", require("telescope.builtin").git_files, { desc = "Search [G]it [F]iles" })
 vim.keymap.set("n", "<leader>sf", require("telescope.builtin").find_files, { desc = "[S]earch [F]iles" })
@@ -42,8 +41,11 @@ vim.keymap.set("n", "]c", require("gitsigns").prev_hunk, { desc = "[G]o to [P]re
 vim.keymap.set("n", "[c", require("gitsigns").next_hunk, { desc = "[G]o to [N]ext Hunk" })
 vim.keymap.set("n", "<leader>hp", require("gitsigns").preview_hunk, { desc = "[P]review [H]unk" })
 vim.keymap.set("n", "<leader>hs", require("gitsigns").stage_hunk, { desc = "[H]unk [S]tage" })
-vim.keymap.set("n", "<leader>rs", require("gitsigns").reset_hunk, { desc = "[R]eset [S]tage" })
+vim.keymap.set("n", "<leader>hr", require("gitsigns").reset_hunk, { desc = "[H]unk [R]eset" })
 vim.keymap.set("n", "<leader>gb", require("gitsigns").blame_line, { desc = "[G]it [B]lame" })
+vim.keymap.set("n", "<leader>gc", ":Neogit commit<CR>", { silent = true })
+vim.keymap.set("n", "<leader>p", ":Neogit pull<CR>", { silent = true })
+vim.keymap.set("n", "<leader>P", ":Neogit push<CR>", { silent = true })
 vim.keymap.set("n", "<leader>do", ":DiffviewOpen<CR>", { desc = "[D]iff [O]pen" })
 vim.keymap.set("n", "<leader>dl", ":DiffviewClose<CR>", { desc = "[D]iff [L]eave" })
 
