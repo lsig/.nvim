@@ -13,7 +13,7 @@ vim.opt.rtp:prepend(lazypath)
 
 return require("lazy").setup({
 	{ "folke/tokyonight.nvim" },
-	{ "catppuccin/nvim", name = "catppuccin" },
+	{ "catppuccin/nvim", name = "catppuccin", priority = 1000 },
 	{ -- LSP Configuration & Plugins
 		"neovim/nvim-lspconfig",
 		dependencies = {
@@ -53,12 +53,13 @@ return require("lazy").setup({
 		end,
 	},
 	{
-  'stevearc/oil.nvim',
-  opts = {},
-  -- Optional dependencies
-  dependencies = { "nvim-tree/nvim-web-devicons" },
-},
-{
+		"stevearc/oil.nvim",
+		opts = {},
+		-- Optional dependencies
+		dependencies = { "nvim-tree/nvim-web-devicons" },
+		event = "VeryLazy",
+	},
+	{
 		"nvim-telescope/telescope-ui-select.nvim",
 		dependencies = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" },
 	},
@@ -88,12 +89,6 @@ return require("lazy").setup({
 		event = "VeryLazy",
 	},
 	{ "windwp/nvim-ts-autotag", event = "VeryLazy" },
-	--null ls
-	-- {
-	-- 	"jose-elias-alvarez/null-ls.nvim",
-	-- 	event = "BufReadPre",
-	-- 	dependencies = { "jayp0521/mason-null-ls.nvim" },
-	-- },
 	-- lualine
 	{
 		"nvim-lualine/lualine.nvim",
@@ -126,7 +121,22 @@ return require("lazy").setup({
 		opts = {},
 		event = "VeryLazy",
 	},
+	{
+		"j-hui/fidget.nvim",
+		opts = {},
+	},
 	{ "mbbill/undotree", event = "VeryLazy" },
 	{ "christoomey/vim-tmux-navigator", event = "VeryLazy" },
 	{ "vim-scripts/ReplaceWithRegister", event = "VeryLazy" },
+	{
+		"nvim-neotest/neotest",
+		dependencies = {
+			"nvim-lua/plenary.nvim",
+			"antoinemadec/FixCursorHold.nvim",
+			"nvim-treesitter/nvim-treesitter",
+			"nvim-neotest/neotest-go",
+			"marilari88/neotest-vitest",
+		},
+		event = "VeryLazy",
+	},
 })

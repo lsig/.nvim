@@ -65,6 +65,17 @@ vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagn
 -- undotree
 vim.keymap.set("n", "<leader>u", ":UndotreeToggle<CR>", { silent = true })
 
+-- Neotest
+vim.keymap.set("n", "<leader>tr", require("neotest").run.run, { desc = "[T]est [R]un" })
+
+vim.keymap.set("n", "<leader>ts", function()
+	require("neotest").summary.toggle()
+end, { desc = "[T]est [S]ummary" })
+
+vim.keymap.set("n", "<leader>tf", function()
+	require("neotest").run.run(vim.fn.expand("%"))
+end, { desc = "[T]est [F]ile" })
+
 -- insert mode remaps
 vim.keymap.set("i", "<C-c>", "<ESC>")
 
