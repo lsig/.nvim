@@ -1,4 +1,6 @@
-require("neodev").setup()
+require("neodev").setup({
+	library = { plugins = { "neotest" }, types = true },
+})
 require("mason").setup()
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
