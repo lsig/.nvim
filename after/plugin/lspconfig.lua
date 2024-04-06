@@ -57,25 +57,28 @@ end
 
 -- Maintained with Mason
 local prettier = require("efmls-configs.formatters.prettier")
-local eslint_d = require("efmls-configs.linters.eslint_d")
+local biome = require("efmls-configs.formatters.biome")
 local clang_format = require("efmls-configs.formatters.clang_format")
 local black = require("efmls-configs.formatters.black")
 local stylua = require("efmls-configs.formatters.stylua")
-local golangci_lint = require("efmls-configs.linters.golangci_lint")
+-- local golangci_lint = require("efmls-configs.linters.golangci_lint")
+local rustfmt = require("efmls-configs.formatters.rustfmt")
 local gofmt = require("efmls-configs.formatters.gofmt")
 
 local languages = {
-	typescript = { eslint_d, prettier },
-	typescriptreact = { eslint_d, prettier },
-	javascript = { eslint_d, prettier },
-	javascriptreact = { eslint_d, prettier },
-	json = { prettier },
+	typescript = { biome, biome },
+	typescriptreact = { biome, biome },
+	javascript = { biome, biome },
+	javascriptreact = { biome, biome },
+	json = { biome },
 	html = { prettier },
+	css = { prettier },
 	cpp = { clang_format },
 	c = { clang_format },
 	python = { black },
 	lua = { stylua },
-	go = { golangci_lint, gofmt },
+	go = { gofmt },
+	rust = { rustfmt },
 }
 
 local servers = {
@@ -95,28 +98,20 @@ local servers = {
 	tsserver = {},
 	clangd = {},
 	sqlls = {},
-	-- tailwindcss = {
-	-- 	filetypes = {
-	-- 		"templ",
-	-- 		"html",
-	-- 		"typescriptreact",
-	-- 		"javascriptreact",
-	-- 		"css",
-	-- 		"sass",
-	-- 		"scss",
-	-- 		"less",
-	-- 	},
-	-- 	init_options = {
-	-- 		userLanguages = {
-	-- 			templ = "html",
-	-- 		},
-	-- 	},
-	-- },
 	gopls = {
+		filetypes = {
+			"go",
+			"gomod",
+			"gowork",
+			"gotmpl",
+		},
+		rootMarkers = { ".git", "go.mod", "go.work" },
 		completeUnimported = true,
 		usePlaceholders = true,
+		staticcheck = true,
 		analysis = {
 			unusedparams = true,
+			shadow = true,
 		},
 	},
 	templ = {},
@@ -221,7 +216,7 @@ require("lspconfig").efm.setup({
 	},
 	filetypes = vim.tbl_keys(languages),
 	settings = {
-		rootMarkers = { ".git/", "package.json" },
+		rootMarkers = { ".git/", "package.json", "go.mod" },
 		languages = languages,
 	},
 	capabilities = capabilities,
