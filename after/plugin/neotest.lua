@@ -6,6 +6,6 @@ require("neotest").setup({
 			},
 			args = { "-count=1", "-timeout=60s" },
 		}),
-        require("neotest-vitest")
+		require("neotest-vitest"),
 	},
 })

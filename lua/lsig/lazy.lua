@@ -108,7 +108,7 @@ return require("lazy").setup({
 			{ "<Leader>gs", "<cmd>Neogit kind=vsplit<CR>", desc = "Neogit" },
 		},
 		config = true,
-		event = "BufEnter"
+		event = "BufEnter",
 	},
 
 	{ -- Adds git releated signs to the gutter, as well as utilities for managing changes
@@ -147,6 +147,7 @@ return require("lazy").setup({
 		"nvim-neotest/neotest",
 		dependencies = {
 			"nvim-lua/plenary.nvim",
+			"nvim-neotest/nvim-nio",
 			"antoinemadec/FixCursorHold.nvim",
 			"nvim-treesitter/nvim-treesitter",
 			"nvim-neotest/neotest-go",
